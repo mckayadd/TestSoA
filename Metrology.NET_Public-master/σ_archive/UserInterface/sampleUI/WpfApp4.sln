@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp4", "WpfApp4\WpfApp4.csproj", "{A534DBD6-F3C5-474D-BC8C-D0E6684A27D8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{11D17F23-E54C-47D3-A04C-1338F456AC87} = {11D17F23-E54C-47D3-A04C-1338F456AC87}
+		{7AF4B06C-7888-431F-AC46-DB9B1A722990} = {7AF4B06C-7888-431F-AC46-DB9B1A722990}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOA_DataAccessLibrary", "..\..\..\Source\SOA_DataAccessLib\SOA_DataAccessLib\SOA_DataAccessLibrary.csproj", "{7AF4B06C-7888-431F-AC46-DB9B1A722990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLViewer", "XMLViewer\XMLViewer.csproj", "{11D17F23-E54C-47D3-A04C-1338F456AC87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A534DBD6-F3C5-474D-BC8C-D0E6684A27D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A534DBD6-F3C5-474D-BC8C-D0E6684A27D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A534DBD6-F3C5-474D-BC8C-D0E6684A27D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A534DBD6-F3C5-474D-BC8C-D0E6684A27D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AF4B06C-7888-431F-AC46-DB9B1A722990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF4B06C-7888-431F-AC46-DB9B1A722990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF4B06C-7888-431F-AC46-DB9B1A722990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF4B06C-7888-431F-AC46-DB9B1A722990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D17F23-E54C-47D3-A04C-1338F456AC87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D17F23-E54C-47D3-A04C-1338F456AC87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D17F23-E54C-47D3-A04C-1338F456AC87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D17F23-E54C-47D3-A04C-1338F456AC87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB9B6498-0FF3-4778-8FC7-65DF9F9B8121}
+	EndGlobalSection
+EndGlobal

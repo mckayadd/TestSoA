@@ -1,0 +1,57 @@
+SoA editor project Folder structure:
+
+Data Files
+	|SOA_AC-1498_TableIV_Time Interval - Measure.xml
+	|SOASample_TwoParameter_SixCases_TwoAssertions_ComplexFormula.xml
+	|UOM_Database.xml
+
+Source
+	|SOA_DataAccessLib
+		|SOA_DataAccessLib
+			|SOA_DataAccessLibrary.csproj
+		|TestProject1
+			|TestProject1.csproj
+		|UnitTestLoad
+			|SOA_DataAccessLibrary_UnitTest1.csproj
+		|SOA_DataAccessLibrary.sln
+		
+	|UserInterface
+		|_Lib
+			|menuBtn
+				|menuBtn.csproj
+		|classes
+			|converters.cs
+			|inpc.cs
+			|objTaxonomy.cs
+			|UoM.cs
+			|utilities.cs
+		|models
+			|mClient.cs
+			|mSoa.cs
+			|mTaxonomy.cs
+		|pages
+			|*different page files
+		|data files
+			|taxonomies.xml
+			|UOM_Database.xml
+		|styles
+			|*different style files
+		|viewModels
+			|viewModels.cs
+			|vmTaxonomy.cs
+		|SOA_UI.sln
+		|SoA_Manager.csproj
+		|soa_1_03_r3mq5epm_wpftmp.csproj (?)
+		|soa_1_03_y2hq0agz_wpftmp.csproj (?)
+	|SOA_UI.sln
+	
+σ_archive
+	|*old user interface
+	
+-SoA_DataAccessLibrary
+
+-SoA_Manager
+
+-TestProject1
+
+-SOA_DataAccessLibrary_UnitTest1
