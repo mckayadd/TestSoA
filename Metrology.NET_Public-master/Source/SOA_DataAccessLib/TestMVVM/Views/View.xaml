@@ -1,12 +1,14 @@
-﻿<Window x:Class="TestMVVM.View"
+﻿<Window x:Class="TestMVVM.View" WindowStartupLocation="CenterScreen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Views="clr-namespace:TestMVVM"
+        xmlns:ViewModels="clr-namespace:TestMVVM"
         xmlns:local="clr-namespace:TestMVVM"
         mc:Ignorable="d"
-        Title="View" Height="350" Width="525">
-    <Grid>
+        Title="View" Height="300" Width="525">
+    <Grid Margin="0,0,0,33">
         <StackPanel>
             <Label Content="Street"></Label>
             <TextBox Text="{Binding Street}"></TextBox>
@@ -20,4 +22,10 @@
             <Button Height="22" Content="Save" Command="{Binding Path=SaveCommand}"/>
         </StackPanel>
     </Grid>
+
+    <Window.DataContext>
+        <ViewModels:ViewModel/>
+    </Window.DataContext>
+    <!--"xmlns:ViewModels" was updated at the header to include the ViewModel namespace-->
+    
 </Window>

@@ -20,14 +20,9 @@ namespace TestMVVM
     /// </summary>
     public partial class View : Window
     {
-        private readonly ViewModel _viewModel;
-
         public View()
         {
             InitializeComponent();
-            _viewModel = new ViewModel();
-            // The DataContext serves as the starting point of Binding Paths
-            DataContext = _viewModel;
         }
 
     }
