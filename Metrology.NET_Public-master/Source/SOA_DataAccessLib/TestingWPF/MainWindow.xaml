@@ -6,9 +6,34 @@
         xmlns:local="clr-namespace:TestingWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+  <!--  <Grid>
         <StackPanel Margin = "20" >
             <Button Margin = "10" Content = "Save" Click = "Button_Click" Width = "80"/>
         </StackPanel>
+    </Grid> -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="4" Text="{Binding FullName}" HorizontalAlignment="Center" FontWeight="Bold"/>
+
+        <Label Grid.Column="0" Grid.Row="1" Margin="4" Content="First Name:" HorizontalAlignment="Right"/>
+        <!-- UpdateSourceTrigger=PropertyChanged makes sure that changes in the TextBoxes are immediately applied to the model. -->
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="4" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="200"/>
+
+        <Label Grid.Column="0" Grid.Row="2" Margin="4" Content="Last Name:" HorizontalAlignment="Right"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Margin="4" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  Width="200"/>
+
+        <Label Grid.Column="0" Grid.Row="3" Margin="4" Content="Age:" HorizontalAlignment="Right"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" Margin="4" Text="{Binding Age}" HorizontalAlignment="Left"/>
+
     </Grid>
 </Window>
