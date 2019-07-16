@@ -1,0 +1,29 @@
+﻿<Window x:Class="View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:VMProject="clr-namespace:TestMVVM;assembly=ViewModel"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Margin="0,0,0,33">
+        <StackPanel>
+            <Label Content="Street"></Label>
+            <TextBox Text="{Binding Street}"></TextBox>
+            <Label Content="City"></Label>
+            <TextBox Text="{Binding City}"></TextBox>
+            <Label Content="State"></Label>
+            <TextBox Text="{Binding State}"></TextBox>
+            <Label Content="Zip"></Label>
+            <TextBox Text="{Binding Zip}"></TextBox>
+            <Label Content=""></Label>
+            <Button Height="22" Content="Save" Command="{Binding Path=SaveCommand}"/>
+        </StackPanel>
+    </Grid>
+
+    <Window.DataContext>
+        <VMProject:ViewModel/>
+    </Window.DataContext>
+    <!--"xmlns:ViewModels" was updated at the header to include the ViewModel namespace-->
+</Window>

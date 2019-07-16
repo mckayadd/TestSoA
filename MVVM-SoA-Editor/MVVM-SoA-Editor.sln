@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel.csproj", "{8FE2D206-74EA-4747-89E1-4F45E5DC6D15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOA_DataAccessLibrary", "..\Metrology.NET_Public-master\Source\SOA_DataAccessLib\SOA_DataAccessLib\SOA_DataAccessLibrary.csproj", "{7AF4B06C-7888-431F-AC46-DB9B1A722990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{888395B7-A7A3-4FC3-A27E-2B02BE5DDA65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FE2D206-74EA-4747-89E1-4F45E5DC6D15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE2D206-74EA-4747-89E1-4F45E5DC6D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE2D206-74EA-4747-89E1-4F45E5DC6D15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE2D206-74EA-4747-89E1-4F45E5DC6D15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AF4B06C-7888-431F-AC46-DB9B1A722990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF4B06C-7888-431F-AC46-DB9B1A722990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF4B06C-7888-431F-AC46-DB9B1A722990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF4B06C-7888-431F-AC46-DB9B1A722990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{888395B7-A7A3-4FC3-A27E-2B02BE5DDA65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{888395B7-A7A3-4FC3-A27E-2B02BE5DDA65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{888395B7-A7A3-4FC3-A27E-2B02BE5DDA65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{888395B7-A7A3-4FC3-A27E-2B02BE5DDA65}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
