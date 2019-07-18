@@ -7,28 +7,40 @@
         xmlns:ViewModels="clr-namespace:TestMVVM"
         xmlns:local="clr-namespace:TestMVVM"
         mc:Ignorable="d"
-        Title="View" Height="300" Width="525">
+        Title="Uncertainty Manager" Height="768" Width="1280" MinHeight="600" MinWidth="900" >
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="3*" />
-        </Grid.ColumnDefinitions>
-        <!-- First Column ********************** -->
-        <!-- <TextBlock FontSize="55" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Left side</TextBlock> -->
-        <StackPanel Orientation="Vertical">
-            <Button Content="Page 1" Click="BtnClickPage1" />
-            <Button Content="Page 2" Click="BtnClickPage2" />
-        </StackPanel>
-        <!-- Splitter ********************** -->
-        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
-        <!-- Second Column ********************** -->
-        <Frame x:Name="WindowFrameColumn2" Grid.Column="2" NavigationUIVisibility="Hidden">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="55"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        
+        <Image Source="{StaticResource logo}" VerticalAlignment="Stretch" HorizontalAlignment="Right" Grid.Row="0" Grid.RowSpan="1" 
+               Margin="0,0,10,5" Height="45"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <!-- First Column ********************** -->
+            <!-- <TextBlock FontSize="55" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Left side</TextBlock> -->
+            <StackPanel Orientation="Vertical">
+                <Button Content="Page 1" Click="BtnClickPage1" />
+                <Button Content="Page 2" Click="BtnClickPage2" />
+            </StackPanel>
+            <!-- Splitter ********************** -->
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+            <!-- Second Column ********************** -->
+            <Frame x:Name="WindowFrameColumn2" Grid.Column="2" NavigationUIVisibility="Hidden">
             
-        </Frame>
+            </Frame>
 
-        <!-- <TextBlock Grid.Column="2" FontSize="55" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Right side</TextBlock> -->
-        <!--  -->
+            <!-- <TextBlock Grid.Column="2" FontSize="55" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Right side</TextBlock> -->
+            <!--  -->
+        </Grid>
+        <Label Content="Copyright 2019, Cal Lab Solutions, LLC" FontSize="11" FontFamily="Calibri" Foreground="White" FontWeight="Light" Background="#071633"
+                   VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="2" VerticalContentAlignment="Bottom" />
     </Grid>
     <!--
     <Grid Margin="0,0,0,33">
