@@ -13,26 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TestMVVM
+namespace TestMVVM.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class View : Window
+    public partial class Page1 : Page
     {
-        public View()
+        public Page1()
         {
             InitializeComponent();
-        }
-
-        private void BtnClickPage1(object sender, RoutedEventArgs e)
-        {
-            WindowFrameColumn2.Content = new Views.Page1();
-        }
-
-        private void BtnClickPage2(object sender, RoutedEventArgs e)
-        {
-            WindowFrameColumn2.Content = new Views.Page2();
         }
     }
 }

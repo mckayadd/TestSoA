@@ -192,6 +192,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SOA_DataAccessLib\SOA_DataAccessLib\SOA_DataAccessLibrary.csproj">
+      <Project>{7af4b06c-7888-431f-ac46-db9b1a722990}</Project>
+      <Name>SOA_DataAccessLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="_Lib\menuBtn\menuBtn.csproj">
       <Project>{0c652563-6b91-44ee-b42d-c29c7805ee59}</Project>
       <Name>menuBtn</Name>
