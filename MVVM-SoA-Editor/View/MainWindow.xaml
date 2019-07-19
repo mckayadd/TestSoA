@@ -7,23 +7,27 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
        Title="SoA Editor" Height="768" Width="1280" MinHeight="600" MinWidth="900" Background="White" Icon="icon.ico">
-    <Grid>
+    <Grid Background="#F0F0F5">
         <Grid.RowDefinitions>
             <RowDefinition Height="27"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="22"/>
         </Grid.RowDefinitions>
 
         <!-- First Row ____________________ -->
         <DockPanel Grid.Row="0">
-            <Menu DockPanel.Dock="Top" Margin="0 0 0 10">
+            <Menu DockPanel.Dock="Top" Margin="0 0 0 10" Background="#102E5B" Foreground="White">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_New" Click="MenuItem_Click" />
-                    <MenuItem Header="_Open" />
-                    <MenuItem Header="_Save" />
+                    <MenuItem Header="_New" Click="MenuItem_Click" Foreground="Black"/>
+                    <MenuItem Header="_Open" Foreground="Black"/>
+                    <MenuItem Header="_Save" Foreground="Black"/>
                     <Separator />
-                    <MenuItem Header="_Exit" />
+                    <MenuItem Header="_Exit" Foreground="Black"/>
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                </MenuItem>
+                <MenuItem Header="_Help">
                 </MenuItem>
             </Menu>
         </DockPanel>
@@ -44,12 +48,12 @@
             </Grid.ColumnDefinitions>
             <!-- First Column ********************** -->
             <!-- <TextBlock FontSize="55" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Left side</TextBlock> -->
-            <StackPanel Orientation="Vertical">
-                <Button Content="New CMC" Click="BtnClickNewCMC" Margin="0 0 0 10" />
+            <StackPanel Orientation="Vertical" Background="#8C9194">
+                <Button Content="Company Info" Click="BtnClickNewCMC" Margin="0 0 0 10" />
                 <Button Content="Open CMC" Click="BtnClickPage2" Margin="0 0 0 10" />
             </StackPanel>
             <!-- Splitter ********************** -->
-            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
             <!-- Second Column ********************** -->
             <Frame x:Name="WindowFrameColumn2" Grid.Column="2" NavigationUIVisibility="Hidden">
 
@@ -61,7 +65,7 @@
         <!-- ______________________________ -->
 
         <!-- Fourth Row ____________________ -->
-        <Label Content="Copyright 2019, Cal Lab Solutions, LLC" FontSize="10" FontFamily="Calibri" Foreground="White" FontWeight="Light" Background="#071633"
+        <Label Content="Copyright 2019, Cal Lab Solutions, LLC" FontSize="11" FontFamily="Calibri" Foreground="White" FontWeight="Light" Background="#102E5B"
                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3" VerticalContentAlignment="Bottom" />
         <!-- ______________________________ -->
 

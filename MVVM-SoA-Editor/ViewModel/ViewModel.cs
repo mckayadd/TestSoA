@@ -107,10 +107,6 @@ namespace TestMVVM
             //MessageBox.Show("file saved!");
 
             //now reset the text boxes
-            Street = string.Empty;
-            State = string.Empty;
-            Zip = string.Empty;
-            City = string.Empty;
         }
 
     }
