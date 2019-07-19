@@ -24,7 +24,8 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="175"/>
+            <ColumnDefinition Width="41.176"/>
+            <ColumnDefinition Width="133.824"/>
             <ColumnDefinition Width="133*" MinWidth="350"/>
             <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
@@ -34,7 +35,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
-        <Menu Name="mainMenu" Grid.Row="0" Grid.Column="0">
+        <Menu Name="mainMenu" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <MenuItem Header="_File">
                 <MenuItem Command="ApplicationCommands.New" CommandParameter="{StaticResource FalseValue}"/>
                 <MenuItem Command="ApplicationCommands.Open" CommandParameter="{StaticResource TrueValue}"/>
@@ -51,10 +52,10 @@
                 <MenuItem Header="Custom Taxonomies"/>
             </MenuItem>
         </Menu>
-        <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="{StaticResource scbLogoBlue}" BorderThickness="0 0 0 2" />
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource scbMenuBackground}" Name="spMenu">
+        <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="{StaticResource scbLogoBlue}" BorderThickness="0 0 0 2" />
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource scbMenuBackground}" Name="spMenu" Grid.ColumnSpan="2">
             <Grid Height="45" Width="175" Background="{StaticResource scbAccentColor}">
-                
+
             </Grid>
             <RadioButton Style="{DynamicResource toggleStyle}" Name="btnNewSoa" Content="new CMC" Tag="{StaticResource newFile}" 
                          Command="ApplicationCommands.New" CommandParameter="{StaticResource FalseValue}"/>
@@ -70,13 +71,13 @@
             <Grid Height="25" Width="175"/>
             <RadioButton Style="{DynamicResource toggleStyle}" Name="btnAdmin" Content="admin" Tag="{StaticResource admin}"/>
         </StackPanel>
-        <Frame Name="frameMain" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" Background="{StaticResource scbPageBackColor}" 
+        <Frame Name="frameMain" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" Background="{StaticResource scbPageBackColor}" 
                NavigationUIVisibility="Hidden" Grid.ColumnSpan="2"/>
         <Label Content="Copyright 2018, Cal Lab Solutions, LLC" FontSize="9" FontFamily="Calibri" Foreground="White" Background="{StaticResource scbMenuBackground}"
                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="3" Grid.Column="0" VerticalContentAlignment="Bottom"
-                   FontWeight="Light"/>
-        <Image Source="{StaticResource logo}" VerticalAlignment="Stretch" HorizontalAlignment="Right" Grid.Column="2" Grid.Row="1" Grid.RowSpan="1" 
-               Margin="0,0,10,5" Height="45"/>
+                   FontWeight="Light" Grid.ColumnSpan="2"/>
+        <Image Source="{StaticResource logo}" VerticalAlignment="Stretch" HorizontalAlignment="Right" Grid.Column="3" Grid.Row="1" Grid.RowSpan="1" 
+               Margin="0,2,10,7" Height="45"/>
 
     </Grid>
 </Controls:MetroWindow>

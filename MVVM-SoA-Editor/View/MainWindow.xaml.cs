@@ -24,5 +24,20 @@ namespace View
         {
             InitializeComponent();
         }
+
+        private void BtnClickNewCMC(object sender, RoutedEventArgs e)
+        {
+            WindowFrameColumn2.Content = new CompanyInfo();
+        }
+
+        private void BtnClickPage2(object sender, RoutedEventArgs e)
+        {
+            WindowFrameColumn2.Content = new Page2();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            WindowFrameColumn2.Content = new CompanyInfo();
+        }
     }
 }

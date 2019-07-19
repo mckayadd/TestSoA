@@ -6,20 +6,65 @@
         xmlns:VMProject="clr-namespace:TestMVVM;assembly=ViewModel"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid Margin="0,0,0,33">
-        <StackPanel>
-            <Label Content="Street"></Label>
-            <TextBox Text="{Binding Street}"></TextBox>
-            <Label Content="City"></Label>
-            <TextBox Text="{Binding City}"></TextBox>
-            <Label Content="State"></Label>
-            <TextBox Text="{Binding State}"></TextBox>
-            <Label Content="Zip"></Label>
-            <TextBox Text="{Binding Zip}"></TextBox>
-            <Label Content=""></Label>
-            <Button Height="22" Content="Save" Command="{Binding Path=SaveCommand}"/>
-        </StackPanel>
+       Title="SoA Editor" Height="768" Width="1280" MinHeight="600" MinWidth="900" Background="White" Icon="icon.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <!-- First Row ____________________ -->
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top" Margin="0 0 0 10">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" Click="MenuItem_Click" />
+                    <MenuItem Header="_Open" />
+                    <MenuItem Header="_Save" />
+                    <Separator />
+                    <MenuItem Header="_Exit" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <!-- ______________________________ -->
+
+        <!-- Second Row ____________________ -->
+        <Image Source="{StaticResource logo}" VerticalAlignment="Stretch" HorizontalAlignment="Right" Grid.Row="1" Grid.RowSpan="1" 
+               Margin="0,0,10,5" Height="45"/>
+        <!--> Resource dictionary must be added to the App.xaml to use logo <-->
+            <!-- ______________________________ -->
+
+        <!-- Third Row ___________________ -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <!-- First Column ********************** -->
+            <!-- <TextBlock FontSize="55" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Left side</TextBlock> -->
+            <StackPanel Orientation="Vertical">
+                <Button Content="New CMC" Click="BtnClickNewCMC" Margin="0 0 0 10" />
+                <Button Content="Open CMC" Click="BtnClickPage2" Margin="0 0 0 10" />
+            </StackPanel>
+            <!-- Splitter ********************** -->
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+            <!-- Second Column ********************** -->
+            <Frame x:Name="WindowFrameColumn2" Grid.Column="2" NavigationUIVisibility="Hidden">
+
+            </Frame>
+
+            <!-- <TextBlock Grid.Column="2" FontSize="55" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Right side</TextBlock> -->
+            <!--  -->
+        </Grid>
+        <!-- ______________________________ -->
+
+        <!-- Fourth Row ____________________ -->
+        <Label Content="Copyright 2019, Cal Lab Solutions, LLC" FontSize="10" FontFamily="Calibri" Foreground="White" FontWeight="Light" Background="#071633"
+                   VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3" VerticalContentAlignment="Bottom" />
+        <!-- ______________________________ -->
+
     </Grid>
 
     <Window.DataContext>
