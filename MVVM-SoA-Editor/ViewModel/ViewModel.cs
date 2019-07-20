@@ -7,7 +7,7 @@ using System.ComponentModel;
 using SOA_DataAccessLibrary;
 using System.Xml.Linq;
 using System.Windows.Input;
-using System.Windows;
+using System.Windows.Forms;
 
 namespace TestMVVM
 {
@@ -22,6 +22,7 @@ namespace TestMVVM
         //define Model objects
         XDocument doc;
         Soa SampleSOA;
+        SOA_DataAccess dao;
 
         //constructor
         public ViewModel()
@@ -109,5 +110,40 @@ namespace TestMVVM
             //now reset the text boxes
         }
 
+        public ICommand OpenCommand
+        {
+            get
+            {
+                return new DelegateCommand(openAction);
+            }
+        }
+
+        private void openAction()
+        {
+            dao = new SOA_DataAccess();
+
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.CheckFileExists = true;
+            dlg.Filter = "XML Files (*.xml)|*.xml|All Files(*.*)|*.*";
+            dlg.Multiselect = false;            
+            try
+            {
+                if (dlg.ShowDialog() != DialogResult.OK) return;
+                
+                dao.load(dlg.FileName);
+                SampleSOA = dao.SOADataMaster;
+
+                Street = SampleSOA.CapabilityScope.Locations[0].Address.Street;
+                City = SampleSOA.CapabilityScope.Locations[0].Address.City;
+                State = SampleSOA.CapabilityScope.Locations[0].Address.State;
+                Zip = SampleSOA.CapabilityScope.Locations[0].Address.Zip;
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("The data file is invalid!");
+                return;
+            }
+        }
     }
 }

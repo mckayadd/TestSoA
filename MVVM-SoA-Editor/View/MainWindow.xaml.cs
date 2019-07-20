@@ -39,5 +39,27 @@ namespace View
         {
             WindowFrameColumn2.Content = new CompanyInfo();
         }
+
+        private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void MenuItem_Open_Click(object sender, RoutedEventArgs e)
+        {
+            //WindowFrameColumn2.Content = new CompanyInfo();
+
+            CompanyInfo page = null;
+            if (WindowFrameColumn2.Content != null)
+            {
+                page = (CompanyInfo)WindowFrameColumn2.Content;
+                //page.ResetPage();
+            }
+            else
+            {
+                page = new CompanyInfo();
+                WindowFrameColumn2.Content = page;
+            }
+        }
     }
 }

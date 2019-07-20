@@ -9,7 +9,7 @@
        Title="SoA Editor" Height="768" Width="1280" MinHeight="600" MinWidth="900" Background="White" Icon="icon.ico">
     <Grid Background="#F0F0F5">
         <Grid.RowDefinitions>
-            <RowDefinition Height="27"/>
+            <RowDefinition Height="32"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="22"/>
@@ -17,13 +17,13 @@
 
         <!-- First Row ____________________ -->
         <DockPanel Grid.Row="0">
-            <Menu DockPanel.Dock="Top" Margin="0 0 0 10" Background="#102E5B" Foreground="White">
+            <Menu DockPanel.Dock="Top" Margin="0 0 0 10" Background="#102E5B" Foreground="White" FontSize="13">
                 <MenuItem Header="_File">
                     <MenuItem Header="_New" Click="MenuItem_Click" Foreground="Black"/>
-                    <MenuItem Header="_Open" Foreground="Black"/>
+                    <MenuItem Header="_Open" Click="MenuItem_Open_Click" Foreground="Black" Command="{Binding Path=OpenCommand}" />
                     <MenuItem Header="_Save" Foreground="Black"/>
                     <Separator />
-                    <MenuItem Header="_Exit" Foreground="Black"/>
+                    <MenuItem Header="_Exit" Click="MenuItem_Exit_Click" Foreground="Black"/>
                 </MenuItem>
                 <MenuItem Header="_Edit">
                 </MenuItem>
@@ -49,8 +49,7 @@
             <!-- First Column ********************** -->
             <!-- <TextBlock FontSize="55" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Left side</TextBlock> -->
             <StackPanel Orientation="Vertical" Background="#8C9194">
-                <Button Content="Company Info" Click="BtnClickNewCMC" Margin="0 0 0 10" />
-                <Button Content="Open CMC" Click="BtnClickPage2" Margin="0 0 0 10" />
+                <Button Content="Company Info" Click="BtnClickNewCMC" Margin="0 0 0 10" />                
             </StackPanel>
             <!-- Splitter ********************** -->
             <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
