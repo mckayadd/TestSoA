@@ -114,6 +114,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Metrology.NET_Public-master\Source\SOA_DataAccessLib\SOA_DataAccessLib\SOA_DataAccessLibrary.csproj">
+      <Project>{7af4b06c-7888-431f-ac46-db9b1a722990}</Project>
+      <Name>SOA_DataAccessLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{8fe2d206-74ea-4747-89e1-4f45e5dc6d15}</Project>
       <Name>ViewModel</Name>

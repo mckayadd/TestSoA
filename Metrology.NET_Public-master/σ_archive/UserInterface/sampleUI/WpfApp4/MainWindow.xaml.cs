@@ -55,7 +55,7 @@ namespace WpfApp4
             var bc = new BrushConverter();
             Brush mycolor= (Brush)bc.ConvertFrom("#008b8b ");
             //load the process database
-            db.Load("MetrologyNET_Taxonomy_v2.xml");
+            db.Load(@"c:\temp\MetrologyNET_Taxonomy_v2.xml");
             //dao2.load("MetrologyNET_Taxonomy_v2.xml");
                 //process counts in the database
             int process_count = db.GetElementsByTagName("mtc:ProcessType").Count;
@@ -402,7 +402,7 @@ namespace WpfApp4
             else
                 tabs.SelectedIndex = 4;
             //MessageBox.Show(childItem.Header.ToString());
-
+            
         }
         private void slct_prcss(object sender, RoutedEventArgs e)
         {

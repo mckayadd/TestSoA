@@ -54,9 +54,66 @@
             <!-- Splitter ********************** -->
             <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
             <!-- Second Column ********************** -->
-            <Frame x:Name="WindowFrameColumn2" Grid.Column="2" NavigationUIVisibility="Hidden">
+            <TabControl Name="tabs" Grid.Column="2">
+                <TabControl.ItemContainerStyle>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                    </Style>
+                </TabControl.ItemContainerStyle>
+                <!--<TabItem Name="startPage">
+                    <Label Content="MII SoA Editor Homepage!" Foreground="DarkGray" FontFamily="Yu Gothic UI Semibold" FontSize="20"></Label>
+                </TabItem>-->
+                
+                <TabItem Name="CompanyInfo">
+                    <Grid>
+                        <StackPanel>
+                            <Label Content="AB ID"></Label>
+                            <TextBox Text="{Binding AB_ID}"></TextBox>
+                            <Label Content="AB Logo Signature"></Label>
+                            <TextBox Text="{Binding AB_logo_sign}"></TextBox>
+                            <Label Content="Scope ID"></Label>
+                            <TextBox Text="{Binding Scope_ID}"></TextBox>
+                            <Label Content="Criteria"></Label>
+                            <TextBox Text="{Binding Criteria}"></TextBox>
+                            <Label Content="Effective Date"></Label>
+                            <TextBox Text="{Binding Effective_date}"></TextBox>
+                            <Label Content="Expiration Date"></Label>
+                            <TextBox Text="{Binding Expiration_date}"></TextBox>
+                            <Label Content="Statement"></Label>
+                            <TextBox Text="{Binding Street}"></TextBox>
+                            <Label Content="Name"></Label>
+                            <TextBox Text="{Binding Name}"></TextBox>
+                            <Label Content="Location ID"></Label>
+                            <TextBox Text="{Binding Location_ID}"></TextBox>                            
+                            <Label Content="Street"></Label>
+                            <TextBox Text="{Binding Street}"></TextBox>
+                            <Label Content="City"></Label>
+                            <TextBox Text="{Binding City}"></TextBox>
+                            <Label Content="State"></Label>
+                            <TextBox Text="{Binding State}"></TextBox>
+                            <Label Content="Zip"></Label>
+                            <TextBox Text="{Binding Zip}"></TextBox>
+                            <Label Content="Contact Name"></Label>
+                            <TextBox Text="{Binding Contact_name}"></TextBox>
+                            <Label Content="Contact Info"></Label>
+                            <TextBox Text="{Binding Contact_info}"></TextBox>
+                            
+                            <Label Content=""></Label>
+                            <Button Height="22" Content="Save" Command="{Binding Path=SaveCommand}"/>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                
+                <TabItem>
+                    <ComboBox Name="comboTaxonomy" SelectionChanged="comboTaxonomySelectionChanged"
+                    IsEditable="True" HorizontalContentAlignment="Left" VerticalAlignment="Top"/>
+                </TabItem>
+                    
+            </TabControl>
 
-            </Frame>
+
+            <!--<Frame x:Name="WindowFrameColumn2" Grid.Column="2" NavigationUIVisibility="Hidden">            
+            </Frame>-->
 
             <!-- <TextBlock Grid.Column="2" FontSize="55" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Right side</TextBlock> -->
             <!--  -->
