@@ -105,8 +105,32 @@
                 </TabItem>
                 
                 <TabItem>
-                    <ComboBox Name="comboTaxonomy" SelectionChanged="comboTaxonomySelectionChanged"
-                    IsEditable="True" HorizontalContentAlignment="Left" VerticalAlignment="Top"/>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox Name="comboTaxonomyMeasureType" 
+                                  SelectionChanged="comboTaxonomyMeasureTypeSelectionChanged"
+                                  
+                                  IsEditable="False" 
+                                  Width="100"
+                                  HorizontalContentAlignment="Left" 
+                                  VerticalAlignment="Top">
+                            <ComboBox.ItemsSource>
+                                <CompositeCollection>
+                                    <ListBoxItem>Measure</ListBoxItem>
+                                    <ListBoxItem>Source</ListBoxItem>
+                                </CompositeCollection>
+                            </ComboBox.ItemsSource>
+                        </ComboBox>
+
+                        <ComboBox Name="comboTaxonomy" 
+                                  SelectionChanged="comboTaxonomySelectionChanged"
+                                  IsEditable="True" 
+                                  HorizontalContentAlignment="Left" 
+                                  VerticalAlignment="Top" 
+                                  Width="400"                                    
+                                  
+                                                                    
+                                  />
+                    </StackPanel>
                 </TabItem>
                     
             </TabControl>
@@ -128,7 +152,7 @@
     </Grid>
 
     <Window.DataContext>
-        <VMProject:ViewModel/>
+        <VMProject:ViewModel/>        
     </Window.DataContext>
     <!--"xmlns:ViewModels" was updated at the header to include the ViewModel namespace-->
 </Window>

@@ -26,22 +26,7 @@ namespace View
         {
             InitializeComponent();
 
-            tabs.SelectedIndex = 0;
-
-            XmlDocument db = new XmlDocument();
-            db.Load(@"c:\temp\MetrologyNET_Taxonomy_v2.xml");
-            int process_count = db.GetElementsByTagName("mtc:ProcessType").Count;
-            //put the processes into combobox(combo2)
-            ComboBoxItem comboitem = null;
-            comboitem = new ComboBoxItem();
-            for (int i = 0; i < process_count; i++)
-            {
-                comboitem = new ComboBoxItem();
-                comboitem.Uid = i.ToString();
-                comboitem.Content = db.GetElementsByTagName("mtc:ProcessType")[i].Attributes["name"].Value;
-                comboTaxonomy.Items.Add(comboitem);
-                //comboitem2.IsSelected = true;
-            }
+            tabs.SelectedIndex = 1;            
         }
 
         private void BtnClickNewCMC(object sender, RoutedEventArgs e)
@@ -87,6 +72,23 @@ namespace View
         private void comboTaxonomySelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void comboTaxonomyMeasureTypeSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            String str = comboTaxonomyMeasureType.SelectedValue.ToString();
+
+
+            if (str.Contains("Measure"))
+            {
+                comboTaxonomy.ItemsSource = "{Binding Path=MeasureTaxonomies}";
+                comboTaxonomy.DisplayMemberPath = "ProcessType";
+            }
+            else if (str.Contains("Source"))
+            {
+                comboTaxonomy.ItemsSource = "{Binding Path=SourceTaxonomies}";
+                comboTaxonomy.DisplayMemberPath = "ProcessType";
+            }
         }
     }
 }

@@ -8,18 +8,43 @@ using SOA_DataAccessLibrary;
 using System.Xml.Linq;
 using System.Windows.Input;
 using System.Windows.Forms;
+using System.Collections.ObjectModel;
+using System.Xml;
 
 namespace TestMVVM
 {
     public class ViewModel : ObservableObject
     {
+        //taxonomy binding
+        private ObservableCollection<Taxonomy> _measureTaxonomies;
+        public ObservableCollection<Taxonomy> MeasureTaxonomies
+        {
+            get { return _measureTaxonomies; }
+            set { _measureTaxonomies = value; RaisePropertyChangedEvent("MeasureTaxonomies"); }
+        }
+
+        private ObservableCollection<Taxonomy> _sourceTaxonomies;
+        public ObservableCollection<Taxonomy> SourceTaxonomies
+        {
+            get { return _sourceTaxonomies; }
+            set { _sourceTaxonomies = value; RaisePropertyChangedEvent("SourceTaxonomies"); }
+        }
+        
+        private Taxonomy _sTaxonmony;
+
+        public Taxonomy STaxonomy
+        {
+            get { return _sTaxonmony; }
+            set { _sTaxonmony = value; }
+        }
+
         private string _AB_ID;
         private string _AB_logo_sign;
         private string _Scope_ID;
         private string _Criteria;
         private string _Effective_date;
         private string _Expiration_date;
-        private string _Statement;
+        //private string _Statement;
         private string _Name;
         private string _Location_ID;
         private string _Contact_name;
@@ -41,19 +66,61 @@ namespace TestMVVM
             //instanciate objects
             doc = new XDocument();
             SampleSOA = new Soa();
+
+            //load taxonomies into combobox. To be used by the View
+            MeasureTaxonomies = createTaxonomyList("measure");
+            SourceTaxonomies = createTaxonomyList("source");
         }
 
-        public string AB_ID { get => _AB_ID; set { _AB_ID = value; RaisePropertyChangedEvent("AB_ID");} }
-        public string AB_logo_sign { get => _AB_logo_sign; set { _AB_logo_sign = value; RaisePropertyChangedEvent("AB_logo_sign"); } }
-        public string Scope_ID { get => _Scope_ID; set { _Scope_ID = value; RaisePropertyChangedEvent("Scope_ID"); } }
-        public string Criteria { get => _Criteria; set { _Criteria = value; RaisePropertyChangedEvent("Criteria"); } }
-        public string Effective_date { get => _Effective_date; set { _Effective_date = value; RaisePropertyChangedEvent("Effective_date"); } }
-        public string Expiration_date { get => _Expiration_date; set { _Expiration_date = value; RaisePropertyChangedEvent("Expiration_date"); } }
-        public string Statement { get => _Statement; set { _Expiration_date = value; RaisePropertyChangedEvent("Statement"); } }
-        public string Name { get => _Name; set { _Name = value; RaisePropertyChangedEvent("Name"); } }
-        public string Location_ID { get => _Location_ID; set { _Location_ID = value; RaisePropertyChangedEvent("Location_ID"); } }
-        public string Contact_name { get => _Contact_name; set { _Contact_name = value; RaisePropertyChangedEvent("Contact_name"); } }
-        public string Contact_info { get => _Contact_info; set { _Contact_info = value; RaisePropertyChangedEvent("Contact_info"); } }
+        private ObservableCollection<Taxonomy> createTaxonomyList(string measureType) {
+
+            ObservableCollection<Taxonomy> tempTaxonomies = new ObservableCollection<Taxonomy>();
+
+            XmlDocument db = new XmlDocument();
+            db.Load(@"c:\temp\MetrologyNET_Taxonomy_v2.xml"); //the path should be updated in the final version
+            int process_count = db.GetElementsByTagName("mtc:ProcessType").Count;
+
+            if (measureType.Equals("measure"))//"measure" in the function argument
+            {
+                for (int i = 0; i < process_count; i++)
+                {
+                    string tempProcessType;
+                    tempProcessType = db.GetElementsByTagName("mtc:ProcessType")[i].Attributes["name"].Value;
+
+                    if (tempProcessType.StartsWith("Measure"))//"Measure" in the Taxonomy database
+                    {
+                        tempTaxonomies.Add(new Taxonomy() { ProcessType = db.GetElementsByTagName("mtc:ProcessType")[i].Attributes["name"].Value });
+                    }
+                }
+            }
+            else if (measureType.Equals("source"))//"source" in the function argument
+            {
+                for (int i = 0; i < process_count; i++)
+                {
+                    string tempProcessType;
+                    tempProcessType = db.GetElementsByTagName("mtc:ProcessType")[i].Attributes["name"].Value;
+
+                    if (tempProcessType.StartsWith("Source"))//"Source" in the Taxonomy database
+                    {
+                        tempTaxonomies.Add(new Taxonomy() { ProcessType = db.GetElementsByTagName("mtc:ProcessType")[i].Attributes["name"].Value });
+                    }
+                }
+            }
+            
+            return tempTaxonomies;
+        }
+
+        public string AB_ID { get { return _AB_ID; } set { _AB_ID = value; RaisePropertyChangedEvent("AB_ID");} }
+        public string AB_logo_sign { get { return _AB_logo_sign; } set { _AB_logo_sign = value; RaisePropertyChangedEvent("AB_logo_sign"); } }
+        public string Scope_ID { get { return _Scope_ID; } set { _Scope_ID = value; RaisePropertyChangedEvent("Scope_ID"); } }
+        public string Criteria { get { return _Criteria; } set { _Criteria = value; RaisePropertyChangedEvent("Criteria"); } }
+        public string Effective_date { get { return _Effective_date; } set { _Effective_date = value; RaisePropertyChangedEvent("Effective_date"); } }
+        public string Expiration_date { get { return _Expiration_date; } set { _Expiration_date = value; RaisePropertyChangedEvent("Expiration_date"); } }
+        //public string Statement { get { return _Statement; } set { _Expiration_date = value; RaisePropertyChangedEvent("Statement"); } }
+        public string Name { get { return _Name; } set { _Name = value; RaisePropertyChangedEvent("Name"); } }
+        public string Location_ID { get { return _Location_ID; } set { _Location_ID = value; RaisePropertyChangedEvent("Location_ID"); } }
+        public string Contact_name { get { return _Contact_name; } set { _Contact_name = value; RaisePropertyChangedEvent("Contact_name"); } }
+        public string Contact_info { get { return _Contact_info; } set { _Contact_info = value; RaisePropertyChangedEvent("Contact_info"); } }
 
         public string Street
         {
@@ -124,7 +191,7 @@ namespace TestMVVM
             SampleSOA.Criteria = Criteria;
             SampleSOA.EffectiveDate = Effective_date;
             SampleSOA.ExpirationDate = Expiration_date;
-            SampleSOA.Statement = Statement;
+            //SampleSOA.Statement = Statement;
             SampleSOA.CapabilityScope.MeasuringEntity = Name;
             SampleSOA.CapabilityScope.Locations[0].id = Location_ID;
             SampleSOA.CapabilityScope.Locations[0].ContactName = Contact_name;
@@ -172,7 +239,7 @@ namespace TestMVVM
                 Criteria = SampleSOA.Criteria;
                 Effective_date = SampleSOA.EffectiveDate;
                 Expiration_date = SampleSOA.ExpirationDate;
-                Statement = SampleSOA.Statement;
+                //Statement = SampleSOA.Statement;
                 Name = SampleSOA.CapabilityScope.MeasuringEntity.ToString();
                 Location_ID = SampleSOA.CapabilityScope.Locations[0].id;
                 Contact_name = SampleSOA.CapabilityScope.Locations[0].ContactName;
