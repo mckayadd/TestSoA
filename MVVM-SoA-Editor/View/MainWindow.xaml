@@ -66,40 +66,96 @@
                 
                 <TabItem Name="CompanyInfo">
                     <Grid>
-                        <StackPanel>
-                            <Label Content="AB ID"></Label>
-                            <TextBox Text="{Binding AB_ID}"></TextBox>
-                            <Label Content="AB Logo Signature"></Label>
-                            <TextBox Text="{Binding AB_logo_sign}"></TextBox>
-                            <Label Content="Scope ID"></Label>
-                            <TextBox Text="{Binding Scope_ID}"></TextBox>
-                            <Label Content="Criteria"></Label>
-                            <TextBox Text="{Binding Criteria}"></TextBox>
-                            <Label Content="Effective Date"></Label>
-                            <TextBox Text="{Binding Effective_date}"></TextBox>
-                            <Label Content="Expiration Date"></Label>
-                            <TextBox Text="{Binding Expiration_date}"></TextBox>
-                            <Label Content="Statement"></Label>
-                            <TextBox Text="{Binding Street}"></TextBox>
-                            <Label Content="Name"></Label>
-                            <TextBox Text="{Binding Name}"></TextBox>
-                            <Label Content="Location ID"></Label>
-                            <TextBox Text="{Binding Location_ID}"></TextBox>                            
-                            <Label Content="Street"></Label>
-                            <TextBox Text="{Binding Street}"></TextBox>
-                            <Label Content="City"></Label>
-                            <TextBox Text="{Binding City}"></TextBox>
-                            <Label Content="State"></Label>
-                            <TextBox Text="{Binding State}"></TextBox>
-                            <Label Content="Zip"></Label>
-                            <TextBox Text="{Binding Zip}"></TextBox>
-                            <Label Content="Contact Name"></Label>
-                            <TextBox Text="{Binding Contact_name}"></TextBox>
-                            <Label Content="Contact Info"></Label>
-                            <TextBox Text="{Binding Contact_info}"></TextBox>
-                            
-                            <Label Content=""></Label>
-                            <Button Height="22" Content="Save" Command="{Binding Path=SaveCommand}"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="75"/>
+                            <RowDefinition Height="75"/>
+                            <RowDefinition Height="75"/>
+                            <RowDefinition Height="75"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Row="0" Grid.Column="0">
+                            <Label Content="AB ID" Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding AB_ID}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="0" Grid.Column="1">
+                            <Label Content="AB Logo Signature" Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding AB_logo_sign}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="0" Grid.Column="2">
+                            <Label Content="Scope ID" Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding Scope_ID}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="0" Grid.Column="3">
+                            <Label Content="Criteria"  Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding Criteria}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="0" Grid.Column="4">
+                            <Label Content="Effective Date"  Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding Effective_date}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Grid.Column="0">
+                            <Label Content="Expiration Date"  Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding Expiration_date}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Grid.Column="1">
+                            <Label Content="Statement"  Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding Street}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Grid.Column="2">
+                            <Label Content="Name"  Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding Name}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Grid.Column="3">
+                            <Label Content="Location ID"  Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding Location_ID}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Grid.Column="4">
+                            <Label Content="Street"  Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding Street}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Grid.Column="0">
+                            <Label Content="City"  Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding City}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Grid.Column="1">
+                            <Label Content="State"  Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding State}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Grid.Column="2">
+                            <Label Content="Zip"   Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding Zip}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Grid.Column="3">
+                            <Label Content="Contact Name"  Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding Contact_name}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Grid.Column="4">
+                            <Label Content="Contact Info"  Margin="30 0 0 0"></Label>
+                            <TextBox Text="{Binding Contact_info}" Width="120"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="3" Grid.Column="0">
+                            <Button Height="22" Width="150" Margin="0 20 0 0" Content="Save" Command="{Binding Path=SaveCommand}"/>
                         </StackPanel>
                     </Grid>
                 </TabItem>
@@ -127,8 +183,7 @@
                                   HorizontalContentAlignment="Left" 
                                   VerticalAlignment="Top" 
                                   Width="400"                                    
-                                  
-                                                                    
+                                                                                            
                                   />
                     </StackPanel>
                 </TabItem>

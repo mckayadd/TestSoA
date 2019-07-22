@@ -26,7 +26,7 @@ namespace View
         {
             InitializeComponent();
 
-            tabs.SelectedIndex = 1;            
+            tabs.SelectedIndex = 0;            
         }
 
         private void BtnClickNewCMC(object sender, RoutedEventArgs e)
