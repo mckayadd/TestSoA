@@ -17,6 +17,8 @@ using System.Xml;
 
 namespace View
 {
+    // Git test from laptop
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
