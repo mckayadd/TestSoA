@@ -1,0 +1,45 @@
+﻿<Window x:Class="WPFUI.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFUI.Views"
+        mc:Ignorable="d"  
+        Title="ShellView" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <!-- Row 1 -->
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=FullName, Mode=OneWay}"></TextBlock>
+        <!-- x:Name="FirstName"  We cannot give the same name to different things, instead we can bind -->
+
+        <!-- Row 2 -->
+        <TextBox Grid.Row="2" Grid.Column="1" MinWidth="100" x:Name="FirstName"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="2" MinWidth="100" x:Name="LastName"></TextBox>
+
+        <!-- Row 3 -->
+        <ComboBox Grid.Row="3" Grid.Column="1" x:Name="People" 
+                  SelectedItem="{Binding Path=SelectedPerson, Mode=OneWayToSource}"
+                  DisplayMemberPath="FirstName"></ComboBox>
+        <TextBlock Grid.Row="3" Grid.Column="2" x:Name="SelectedPerson_LastName" /> <!-- by putting _LastName, we can reach that property -->
+
+    </Grid>
+</Window>
