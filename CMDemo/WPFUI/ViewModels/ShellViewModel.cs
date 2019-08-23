@@ -8,7 +8,7 @@ using WPFUI.Models;
 
 namespace WPFUI.ViewModels
 {
-    public class ShellViewModel : Screen // keyboard shortcut: ctrl + .
+    public class ShellViewModel : Conductor<object> // Screen
     {
         private string _firstName;
         private string _lastName;
@@ -77,6 +77,36 @@ namespace WPFUI.ViewModels
                 _selectedPerson = value;
                 NotifyOfPropertyChange(() => SelectedPerson);
             }
+        }
+
+        public bool CanClearText(string firstName, string lastName) // used to disable the button when the text boxes are empty. Again, the naming matters: ClearText, CanClearText...
+        {
+            //throw new NotImplementedException();
+            if (String.IsNullOrWhiteSpace(firstName) && String.IsNullOrWhiteSpace(lastName))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        
+        public void ClearText(string firstName, string lastName)
+        {
+            FirstName = "";
+            LastName = "";
+        }
+
+        public void LoadPageOne()
+        {
+            ActivateItem(new FirstChildViewModel());
+
+        }
+
+        public void LoadPageTwo()
+        {
+            ActivateItem(new SecondChildViewModel());
         }
 
     }
