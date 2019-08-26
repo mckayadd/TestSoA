@@ -15,6 +15,9 @@ namespace SoAEditor.ViewModels
     public class ShellViewModel : Conductor<object>
     {
         private string _city = "El-aziz";
+        private string _selectedPage;
+        private BindableCollection<string> _pages = new BindableCollection<string>();
+
 
         XDocument doc;
         Soa SampleSOA;
@@ -23,6 +26,8 @@ namespace SoAEditor.ViewModels
         {
             doc = new XDocument();
             SampleSOA = new Soa();
+            Pages.Add("Page One");
+            Pages.Add("Page Two");
         }
 
         public string City
@@ -38,7 +43,7 @@ namespace SoAEditor.ViewModels
             }
         }
 
-        public void OpenXML()
+        public void SaveXML()
         {
             SampleSOA.CapabilityScope.Locations[0].Address.City = City;
 
@@ -63,6 +68,36 @@ namespace SoAEditor.ViewModels
             doc.Save(@"C:\Temp\MySample.xml");
 
 
+        }
+
+        public void LoadPageOne()
+        {
+            ActivateItem(new PageOneViewModel());
+        }
+
+        public void LoadPageTwo()
+        {
+            ActivateItem(new PageTwoViewModel());
+        }
+
+
+        public string SelectedPage
+        {
+            get { return _selectedPage; }
+            set
+            {
+                _selectedPage = value;
+                if (string.Equals(value, "Page One")) LoadPageOne();
+                else if (string.Equals(value, "Page Two")) LoadPageTwo();
+                NotifyOfPropertyChange(() => SelectedPage);
+            }
+        }
+
+
+        public BindableCollection<string> Pages
+        {
+            get { return _pages; }
+            set { _pages = value; }
         }
 
     }

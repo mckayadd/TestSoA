@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SoAEditor.Views"
         mc:Ignorable="d" 
-        Title="ShellView" Height="450" Width="800">
+        Title="SoA Editor" Height="600" Width="900" MinHeight="400" MinWidth="600" Icon="Icon.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="22"/>
         </Grid.RowDefinitions>
@@ -23,12 +24,45 @@
             <ColumnDefinition Width="20" />
 
         </Grid.ColumnDefinitions>
-
         
-        <TextBox Grid.Column="1" Grid.Row="1" x:Name="City"/>
-        <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Path=City, Mode=OneWay}"/>
+        <!-- Row 0: Menu- just has background color for now -->
+        <Label Background="#102E5B"
+               VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+               Grid.Row="0" VerticalContentAlignment="Bottom"
+               Grid.ColumnSpan="5" Margin="0,0,0,5"/>
+        <!-- __________________________________ -->
         
-        <Button x:Name="OpenXML"  Grid.Column="2" Grid.Row="2">Open XML</Button>
+        <!-- Row 1: Cal Lab logo -->
+        <Image Source="{StaticResource logo}" VerticalAlignment="Stretch" HorizontalAlignment="Right" Grid.Row="1" Grid.ColumnSpan="5" 
+               Margin="0,0,10,5" Height="45"/>
+        <!--> Resource dictionary must be added to the App.xaml to use logo <-->
+        <!-- __________________________________ -->
 
+        <!-- Row 2:  -->
+        <TextBox Grid.Column="2" Grid.Row="2" x:Name="City"/>
+
+        <!-- Row 3:  -->
+        <TextBlock Grid.Column="2" Grid.Row="3" Text="{Binding Path=City, Mode=OneWay}"/>
+        
+        <Button x:Name="SaveXML"  Grid.Column="3" Grid.Row="3">Save</Button>
+
+        <!-- Row 4 -->
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <Button Height="30" Margin="0 0 0 10" x:Name="LoadPageOne">Page 1</Button>
+            <Button Height="30" Margin="0 0 0 10" x:Name="LoadPageTwo">Page 2</Button>
+            <ComboBox Margin="0 0 0 10" x:Name="Pages"
+                      SelectedItem="{Binding Path=SelectedPage, Mode=OneWayToSource}" ></ComboBox>
+            <TextBlock Margin="0 0 0 10" x:Name="SelectedPage"></TextBlock>
+        </StackPanel>
+        <ContentControl Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
+                        x:Name="ActiveItem" />  
+        
+        <!-- Last Row: Copyright -->
+        <Label Content="Copyright 2019, Cal Lab Solutions, LLC" 
+               FontSize="11" FontFamily="Calibri" Foreground="White"
+               FontWeight="Light" Background="#102E5B"
+               VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+               Grid.Row="5" VerticalContentAlignment="Bottom"
+               Grid.ColumnSpan="5"/>
     </Grid>
 </Window>
