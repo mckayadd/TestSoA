@@ -10,6 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="22"/>
         </Grid.RowDefinitions>
@@ -22,9 +23,12 @@
             <ColumnDefinition Width="20" />
 
         </Grid.ColumnDefinitions>
+
         
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="City"/>
+        <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Path=City, Mode=OneWay}"/>
         
-        
-        
+        <Button x:Name="OpenXML"  Grid.Column="2" Grid.Row="2">Open XML</Button>
+
     </Grid>
 </Window>
