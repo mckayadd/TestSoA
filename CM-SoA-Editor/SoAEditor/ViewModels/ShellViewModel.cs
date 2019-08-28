@@ -17,8 +17,10 @@ namespace SoAEditor.ViewModels
         private string _city = "El-aziz";
         private string _selectedPage;
         private BindableCollection<string> _pages = new BindableCollection<string>();
-
-
+        private BindableCollection<string> _taxonomies = new BindableCollection<string>();
+        private BindableCollection<string> _selectedTaxonomy = new BindableCollection<string>();
+       
+               
         XDocument doc;
         Soa SampleSOA;
 
@@ -26,8 +28,18 @@ namespace SoAEditor.ViewModels
         {
             doc = new XDocument();
             SampleSOA = new Soa();
-            Pages.Add("Page One");
-            Pages.Add("Page Two");
+            Pages.Add("Source");
+            Pages.Add("Measure");
+            Taxonomies.Add("Source.AC.DC");
+            Taxonomies.Add("Source.DF.HF");
+            Taxonomies.Add("Source.Merhaba");
+            Taxonomies.Add("Source.Hello");
+            Taxonomies.Add("Source.World");
+            Taxonomies.Add("Measure.AC.DC");
+            Taxonomies.Add("Measure.Nesimi");
+            Taxonomies.Add("Measure.Kildiyse");
+            Taxonomies.Add("Measure.bir.katre");
+            Taxonomies.Add("Measure.Tovbe");
         }
 
         public string City
@@ -87,17 +99,48 @@ namespace SoAEditor.ViewModels
             set
             {
                 _selectedPage = value;
-                if (string.Equals(value, "Page One")) LoadPageOne();
-                else if (string.Equals(value, "Page Two")) LoadPageTwo();
+                if (string.Equals(value, "Source"))
+                {
+                    foreach (string str in Taxonomies)
+                    {
+                        if (str.StartsWith("Source"))
+                        {
+                            SelectedTaxonomy.Add(str);
+                        }
+                    }
+                    LoadPageOne();
+                }
+                else if (string.Equals(value, "Measure"))
+                {
+                    foreach (string str in Taxonomies)
+                    {
+                        if (str.StartsWith("Measure"))
+                        {
+                            SelectedTaxonomy.Add(str);
+                        }
+                    }
+                    LoadPageTwo();
+                }
                 NotifyOfPropertyChange(() => SelectedPage);
             }
         }
-
 
         public BindableCollection<string> Pages
         {
             get { return _pages; }
             set { _pages = value; }
+        }
+
+        public BindableCollection<string> SelectedTaxonomy
+        {
+            get { return _selectedTaxonomy; }
+            set { _selectedTaxonomy = value; }
+        }
+
+        public BindableCollection<string> Taxonomies
+        {
+            get { return _taxonomies; }
+            set { _taxonomies = value; }
         }
 
     }

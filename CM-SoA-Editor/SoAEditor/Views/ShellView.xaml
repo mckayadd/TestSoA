@@ -53,6 +53,8 @@
             <ComboBox Margin="0 0 0 10" x:Name="Pages"
                       SelectedItem="{Binding Path=SelectedPage, Mode=OneWayToSource}" ></ComboBox>
             <TextBlock Margin="0 0 0 10" x:Name="SelectedPage"></TextBlock>
+            <ComboBox Margin="0 0 0 10" x:Name="SelectedTaxonomy"
+                 ></ComboBox>
         </StackPanel>
         <ContentControl Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                         x:Name="ActiveItem" />  
