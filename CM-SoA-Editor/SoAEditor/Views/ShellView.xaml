@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SoAEditor.Views"
         mc:Ignorable="d" 
-        Title="SoA Editor" Height="600" Width="900" MinHeight="400" MinWidth="600" Icon="Icon.ico">
+        Title="SoA Editor" Height="650" Width="1000" MinHeight="400" MinWidth="600" Icon="Icon.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="22"/>
         </Grid.RowDefinitions>
@@ -39,20 +39,23 @@
         <!-- __________________________________ -->
 
         <!-- Row 2:  -->
-        <TextBox Grid.Column="2" Grid.Row="2" x:Name="City"/>
+        <!-- "<TextBox Grid.Column="2" Grid.Row="2" x:Name="City"/> -->
 
         <!-- Row 3:  -->
+        
+        <!--
         <TextBlock Grid.Column="2" Grid.Row="3" Text="{Binding Path=City, Mode=OneWay}"/>
         
         <Button x:Name="SaveXML"  Grid.Column="3" Grid.Row="3">Save</Button>
-
+        -->
+        
         <!-- Row 4 -->
         <StackPanel Grid.Row="4" Grid.Column="1">
-            <Button Height="30" Margin="0 0 0 10" x:Name="LoadPageOne">Page 1</Button>
+            <Button Height="30" Margin="0 0 0 10" x:Name="LoadNewCompany">New Company</Button>
             <Button Height="30" Margin="0 0 0 10" x:Name="LoadPageTwo">Page 2</Button>
-            <ComboBox Margin="0 0 0 10" x:Name="Pages"
-                      SelectedItem="{Binding Path=SelectedPage, Mode=OneWayToSource}" ></ComboBox>
-            <TextBlock Margin="0 0 0 10" x:Name="SelectedPage"></TextBlock>
+            <ComboBox Margin="0 0 0 10" x:Name="TaxonomyOptions"
+                      SelectedItem="{Binding Path=SelectedOptionForTaxonomy, Mode=OneWayToSource}" ></ComboBox>
+            <TextBlock Margin="0 0 0 10" x:Name="SelectedOptionForTaxonomy"></TextBlock>
             <ComboBox Margin="0 0 0 10" x:Name="SelectedTaxonomy"
                  ></ComboBox>
         </StackPanel>

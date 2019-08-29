@@ -74,11 +74,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModels\PageOneViewModel.cs" />
+    <Compile Include="ViewModels\NewCompanyViewModel.cs" />
     <Compile Include="ViewModels\PageTwoViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="Views\PageOneView.xaml.cs">
-      <DependentUpon>PageOneView.xaml</DependentUpon>
+    <Compile Include="Views\NewCompanyView.xaml.cs">
+      <DependentUpon>NewCompanyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PageTwoView.xaml.cs">
       <DependentUpon>PageTwoView.xaml</DependentUpon>
@@ -123,7 +123,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PageOneView.xaml">
+    <Page Include="Views\NewCompanyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -14,77 +14,33 @@ namespace SoAEditor.ViewModels
 {
     public class ShellViewModel : Conductor<object>
     {
-        private string _city = "El-aziz";
-        private string _selectedPage;
-        private BindableCollection<string> _pages = new BindableCollection<string>();
-        private BindableCollection<string> _taxonomies = new BindableCollection<string>();
+        
+        private string _selectedOptionForTaxonomy;
+        private BindableCollection<string> _taxonomyOptions = new BindableCollection<string>();
+        private BindableCollection<string> _taxonomyContent = new BindableCollection<string>();
         private BindableCollection<string> _selectedTaxonomy = new BindableCollection<string>();
        
-               
-        XDocument doc;
-        Soa SampleSOA;
-
         public ShellViewModel()
         {
-            doc = new XDocument();
-            SampleSOA = new Soa();
-            Pages.Add("Source");
-            Pages.Add("Measure");
-            Taxonomies.Add("Source.AC.DC");
-            Taxonomies.Add("Source.DF.HF");
-            Taxonomies.Add("Source.Merhaba");
-            Taxonomies.Add("Source.Hello");
-            Taxonomies.Add("Source.World");
-            Taxonomies.Add("Measure.AC.DC");
-            Taxonomies.Add("Measure.Nesimi");
-            Taxonomies.Add("Measure.Kildiyse");
-            Taxonomies.Add("Measure.bir.katre");
-            Taxonomies.Add("Measure.Tovbe");
+            
+            TaxonomyOptions.Add("Source");
+            TaxonomyOptions.Add("Measure");
+
+            TaxonomyContent.Add("Source.AC.DC");
+            TaxonomyContent.Add("Source.DF.HF");
+            TaxonomyContent.Add("Source.Merhaba");
+            TaxonomyContent.Add("Source.Hello");
+            TaxonomyContent.Add("Source.World");
+            TaxonomyContent.Add("Measure.AC.DC");
+            TaxonomyContent.Add("Measure.Nesimi");
+            TaxonomyContent.Add("Measure.Kildiyse");
+            TaxonomyContent.Add("Measure.bir.katre");
+            TaxonomyContent.Add("Measure.Tovbe");
         }
 
-        public string City
+        public void LoadNewCompany()
         {
-            get
-            {
-                return _city;
-            }
-            set
-            {
-                _city = value;
-                NotifyOfPropertyChange(() => City);
-            }
-        }
-
-        public void SaveXML()
-        {
-            SampleSOA.CapabilityScope.Locations[0].Address.City = City;
-
-            SampleSOA.Ab_ID = "a";
-            SampleSOA.Ab_Logo_Signature = "a";
-            SampleSOA.Scope_ID_Number = "a";
-            SampleSOA.Criteria = "a";
-            SampleSOA.EffectiveDate = "a";
-            SampleSOA.ExpirationDate = "a";
-            //SampleSOA.Statement = Statement;
-            SampleSOA.CapabilityScope.MeasuringEntity = "a";
-            SampleSOA.CapabilityScope.Locations[0].id = "a";
-            SampleSOA.CapabilityScope.Locations[0].ContactName = "a";
-            //SampleSOA.CapabilityScope.Locations[0].ContactInfo = Contact_info;
-            SampleSOA.CapabilityScope.Locations[0].Address.Street = "a";
-            //SampleSOA.CapabilityScope.Locations[0].Address.City = City;
-            SampleSOA.CapabilityScope.Locations[0].Address.State = "a";
-            SampleSOA.CapabilityScope.Locations[0].Address.Zip = "a";
-
-            SampleSOA.writeTo(doc);
-
-            doc.Save(@"C:\Temp\MySample.xml");
-
-
-        }
-
-        public void LoadPageOne()
-        {
-            ActivateItem(new PageOneViewModel());
+            ActivateItem(new NewCompanyViewModel());
         }
 
         public void LoadPageTwo()
@@ -93,26 +49,28 @@ namespace SoAEditor.ViewModels
         }
 
 
-        public string SelectedPage
+        public string SelectedOptionForTaxonomy
         {
-            get { return _selectedPage; }
+            get { return _selectedOptionForTaxonomy; }
             set
             {
-                _selectedPage = value;
+                _selectedOptionForTaxonomy = value;
                 if (string.Equals(value, "Source"))
                 {
-                    foreach (string str in Taxonomies)
+                    SelectedTaxonomy.Clear();
+                    foreach (string str in TaxonomyContent)
                     {
                         if (str.StartsWith("Source"))
                         {
                             SelectedTaxonomy.Add(str);
                         }
                     }
-                    LoadPageOne();
+                    LoadNewCompany();
                 }
                 else if (string.Equals(value, "Measure"))
                 {
-                    foreach (string str in Taxonomies)
+                    SelectedTaxonomy.Clear();
+                    foreach (string str in TaxonomyContent)
                     {
                         if (str.StartsWith("Measure"))
                         {
@@ -121,14 +79,14 @@ namespace SoAEditor.ViewModels
                     }
                     LoadPageTwo();
                 }
-                NotifyOfPropertyChange(() => SelectedPage);
+                NotifyOfPropertyChange(() => SelectedOptionForTaxonomy);
             }
         }
 
-        public BindableCollection<string> Pages
+        public BindableCollection<string> TaxonomyOptions
         {
-            get { return _pages; }
-            set { _pages = value; }
+            get { return _taxonomyOptions; }
+            set { _taxonomyOptions = value; }
         }
 
         public BindableCollection<string> SelectedTaxonomy
@@ -137,10 +95,10 @@ namespace SoAEditor.ViewModels
             set { _selectedTaxonomy = value; }
         }
 
-        public BindableCollection<string> Taxonomies
+        public BindableCollection<string> TaxonomyContent
         {
-            get { return _taxonomies; }
-            set { _taxonomies = value; }
+            get { return _taxonomyContent; }
+            set { _taxonomyContent = value; }
         }
 
     }
