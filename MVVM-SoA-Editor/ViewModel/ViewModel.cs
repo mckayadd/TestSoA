@@ -44,7 +44,7 @@ namespace TestMVVM
         private string _Criteria;
         private string _Effective_date;
         private string _Expiration_date;
-        //private string _Statement;
+        private string _Statement;
         private string _Name;
         private string _Location_ID;
         private string _Contact_name;
@@ -116,7 +116,7 @@ namespace TestMVVM
         public string Criteria { get { return _Criteria; } set { _Criteria = value; RaisePropertyChangedEvent("Criteria"); } }
         public string Effective_date { get { return _Effective_date; } set { _Effective_date = value; RaisePropertyChangedEvent("Effective_date"); } }
         public string Expiration_date { get { return _Expiration_date; } set { _Expiration_date = value; RaisePropertyChangedEvent("Expiration_date"); } }
-        //public string Statement { get { return _Statement; } set { _Expiration_date = value; RaisePropertyChangedEvent("Statement"); } }
+        public string Statement { get { return _Statement; } set { _Expiration_date = value; RaisePropertyChangedEvent("Statement"); } }
         public string Name { get { return _Name; } set { _Name = value; RaisePropertyChangedEvent("Name"); } }
         public string Location_ID { get { return _Location_ID; } set { _Location_ID = value; RaisePropertyChangedEvent("Location_ID"); } }
         public string Contact_name { get { return _Contact_name; } set { _Contact_name = value; RaisePropertyChangedEvent("Contact_name"); } }
@@ -191,7 +191,7 @@ namespace TestMVVM
             SampleSOA.Criteria = Criteria;
             SampleSOA.EffectiveDate = Effective_date;
             SampleSOA.ExpirationDate = Expiration_date;
-            //SampleSOA.Statement = Statement;
+            SampleSOA.Statement = Statement;
             SampleSOA.CapabilityScope.MeasuringEntity = Name;
             SampleSOA.CapabilityScope.Locations[0].id = Location_ID;
             SampleSOA.CapabilityScope.Locations[0].ContactName = Contact_name;

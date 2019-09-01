@@ -10,10 +10,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="22"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -51,13 +51,10 @@
         
         <!-- Row 4 -->
         <StackPanel Grid.Row="4" Grid.Column="1">
-            <Button Height="30" Margin="0 0 0 10" x:Name="LoadNewCompany">New Company</Button>
-            <Button Height="30" Margin="0 0 0 10" x:Name="LoadPageTwo">Page 2</Button>
-            <ComboBox Margin="0 0 0 10" x:Name="TaxonomyOptions"
-                      SelectedItem="{Binding Path=SelectedOptionForTaxonomy, Mode=OneWayToSource}" ></ComboBox>
-            <TextBlock Margin="0 0 0 10" x:Name="SelectedOptionForTaxonomy"></TextBlock>
-            <ComboBox Margin="0 0 0 10" x:Name="SelectedTaxonomy"
-                 ></ComboBox>
+            <Button Height="30" Margin="10 0 10 10" x:Name="LoadNewCompany">New Company</Button>
+            <Button Height="30" Margin="10 0 10 10" x:Name="LoadNewTaxonomy">New Taxonomy</Button>
+            
+            
         </StackPanel>
         <ContentControl Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                         x:Name="ActiveItem" />  
@@ -68,6 +65,6 @@
                FontWeight="Light" Background="#102E5B"
                VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                Grid.Row="5" VerticalContentAlignment="Bottom"
-               Grid.ColumnSpan="5"/>
+               Grid.ColumnSpan="5" Margin="0 3 0 0"/>
     </Grid>
 </Window>

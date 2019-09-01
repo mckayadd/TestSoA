@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SoAEditor.Views
 {
     /// <summary>
-    /// Interaction logic for PageTwoView.xaml
+    /// Interaction logic for NewTaxonomyView.xaml
     /// </summary>
-    public partial class PageTwoView : UserControl
+    public partial class NewTaxonomyView : UserControl
     {
-        public PageTwoView()
+        public NewTaxonomyView()
         {
             InitializeComponent();
         }

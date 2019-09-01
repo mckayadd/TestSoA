@@ -72,7 +72,7 @@ namespace SoAEditor.ViewModels
             SampleSOA.Criteria = "a";
             SampleSOA.EffectiveDate = "a";
             SampleSOA.ExpirationDate = "a";
-            //SampleSOA.Statement = Statement;
+            SampleSOA.Statement = "a";
             SampleSOA.CapabilityScope.MeasuringEntity = "a";
             SampleSOA.CapabilityScope.Locations[0].id = "a";
             SampleSOA.CapabilityScope.Locations[0].ContactName = "a";

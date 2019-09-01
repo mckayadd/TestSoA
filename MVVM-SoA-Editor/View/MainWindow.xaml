@@ -113,7 +113,7 @@
 
                         <StackPanel Grid.Row="1" Grid.Column="1">
                             <Label Content="Statement"  Margin="30 0 0 0"></Label>
-                            <TextBox Text="{Binding Street}" Width="120"></TextBox>
+                            <TextBox Text="{Binding Statement}" Width="120"></TextBox>
                         </StackPanel>
 
                         <StackPanel Grid.Row="1" Grid.Column="2">
