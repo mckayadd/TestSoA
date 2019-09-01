@@ -133,7 +133,7 @@
                                 <StackPanel Orientation="Vertical">
                                     <DataGrid x:Name="dgRequiredParameters" ItemsSource="{Binding Path=currentTaxonomy.requiredParams}" AutoGenerateColumns="False" 
                                           HeadersVisibility="Column" Margin="4 0 25 0" ColumnHeaderStyle="{StaticResource soaDgStyleChildHeader}" Style="{StaticResource soaDgTechniques}" RowStyle="{StaticResource soaDgTechniquesRows}"
-                                              CellStyle="{StaticResource soaDgCells}" BorderThickness="0" MinColumnWidth="150" CanUserAddRows="False" CanUserDeleteRows="False" IsEnabled="False">
+                                              CellStyle="{StaticResource soaDgCells}" BorderThickness="0" MinColumnWidth="150" CanUserAddRows="False" CanUserDeleteRows="False" IsEnabled="False" SelectionChanged="DgRequiredParameters_SelectionChanged">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="Required" Binding="{Binding Path=parameter}"/>
                                         </DataGrid.Columns>

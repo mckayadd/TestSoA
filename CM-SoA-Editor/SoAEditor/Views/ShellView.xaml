@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cal="http://www.caliburnproject.org"
         xmlns:local="clr-namespace:SoAEditor.Views"
         mc:Ignorable="d" 
         Title="SoA Editor" Height="650" Width="1000" MinHeight="400" MinWidth="600" Icon="Icon.ico">
@@ -17,19 +18,36 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="10" />
 
         </Grid.ColumnDefinitions>
         
         <!-- Row 0: Menu- just has background color for now -->
-        <Label Background="#102E5B"
+        <!--  <Label Background="#102E5B"
                VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                Grid.Row="0" VerticalContentAlignment="Bottom"
-               Grid.ColumnSpan="5" Margin="0,0,0,5"/>
+               Grid.ColumnSpan="5" Margin="0,0,0,5"/> -->
+
+        <DockPanel Grid.Row="0" Grid.ColumnSpan="5">
+            <Menu DockPanel.Dock="Top" Margin="0 0 0 10" Background="#102E5B" Foreground="White" FontSize="13">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" cal:Message.Attach="LoadNewCompany" Foreground="Black"/>
+                    <MenuItem Header="_Open"  Foreground="Black"  />
+                    <MenuItem Header="_Save" Foreground="Black"/>
+                    <Separator />
+                    <MenuItem Header="_Exit" x:Name="ExitApp" Foreground="Black"/>
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                </MenuItem>
+                <MenuItem Header="_Help">
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        
         <!-- __________________________________ -->
         
         <!-- Row 1: Cal Lab logo -->

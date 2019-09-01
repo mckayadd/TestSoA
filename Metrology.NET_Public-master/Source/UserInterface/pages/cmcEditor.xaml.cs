@@ -182,5 +182,10 @@ namespace soa_1_03.pages
         {
             
         }
+
+        private void DgRequiredParameters_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

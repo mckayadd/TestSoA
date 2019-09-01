@@ -1,4 +1,6 @@
 ﻿using Caliburn.Micro;
+using System.Windows;
+
 
 namespace SoAEditor.ViewModels
 {
@@ -17,6 +19,11 @@ namespace SoAEditor.ViewModels
         public void LoadNewTaxonomy()
         {
             ActivateItem(new NewTaxonomyViewModel());
+        }
+
+        public void ExitApp()
+        {
+            Application.Current.Shutdown();
         }
 
     }

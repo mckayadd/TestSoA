@@ -46,10 +46,15 @@ namespace SoAEditor.ViewModels
             XmlDocument db = new XmlDocument();
             db.Load(@"c:\temp\MetrologyNET_Taxonomy_v2.xml"); //the path should be updated in the final version
             int process_count = db.GetElementsByTagName("mtc:ProcessType").Count;
+            string strTemp;
+            strTemp = db.GetElementsByTagName("mtc:ProcessType")[0].Attributes["name"].Value; //("mtc:Parameter"); // Attributes["name"].Value;
 
             for (int i = 0; i < process_count; i++)
             {
                 TaxonomyContent.Add(db.GetElementsByTagName("mtc:ProcessType")[i].Attributes["name"].Value);
+
+
+                
                 // string str = SampleSOA.CapabilityScope.Activities[0].ProcessTypes[0].ProcessType.Parameters;
             }
         }
