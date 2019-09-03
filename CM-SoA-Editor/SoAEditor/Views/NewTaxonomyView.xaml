@@ -37,7 +37,8 @@
         <StackPanel Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
             <Label Content="Taxonomy"></Label>
             <ComboBox Margin="10 0 10 10" x:Name="SelectedTaxonomy" Height="40"
-                    SelectedItem="{Binding Path=SelectedProcessType, Mode=OneWayToSource}"></ComboBox>
+                    SelectedItem="{Binding Path=SelectedProcessType, Mode=OneWayToSource}"
+                      IsEnabled="{Binding CanSelectATaxonomy}"></ComboBox>
         </StackPanel>
         
         

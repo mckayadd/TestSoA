@@ -12,7 +12,7 @@ namespace SoAEditor.ViewModels
     {
         private string _selectedOptionForTaxonomy;
         private string _selectedProcessType;
-
+        private bool _canSelectATaxonomy = false;
         //Soa SampleSOA;
 
         private BindableCollection<string> _taxonomyOptions = new BindableCollection<string>();
@@ -76,6 +76,7 @@ namespace SoAEditor.ViewModels
                             SelectedTaxonomy.Add(tempStr);
                         }
                     }
+                    CanSelectATaxonomy = IsSelectedTaxonomyEmpty();
                 }
                 else if (string.Equals(value, "Measure"))
                 {
@@ -88,9 +89,25 @@ namespace SoAEditor.ViewModels
                             SelectedTaxonomy.Add(tempStr);
                         }
                     }
+                    CanSelectATaxonomy = IsSelectedTaxonomyEmpty();
                 }
                 NotifyOfPropertyChange(() => SelectedOptionForTaxonomy);
             }
+        }
+
+        public bool IsSelectedTaxonomyEmpty()
+        {
+            if (SelectedTaxonomy.Any())
+            {
+                return true;
+            }
+            else if(!SelectedTaxonomy.Any())
+            {
+                return false;
+            }
+
+            return false;
+
         }
 
         public string SelectedProcessType
@@ -108,6 +125,16 @@ namespace SoAEditor.ViewModels
             }
         }
 
+        public bool CanSelectATaxonomy
+        {
+            get { return _canSelectATaxonomy; }
+            set
+            {
+                _canSelectATaxonomy = value;
+                NotifyOfPropertyChange(() => CanSelectATaxonomy);
+            }
+        }
+
         public BindableCollection<string> TaxonomyOptions
         {
             get { return _taxonomyOptions; }
@@ -120,6 +147,7 @@ namespace SoAEditor.ViewModels
             set { _selectedTaxonomy = value; }
         }
 
+     
         public BindableCollection<string> TaxonomyContent
         {
             get { return _taxonomyContent; }

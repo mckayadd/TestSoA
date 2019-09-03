@@ -36,8 +36,9 @@
             <Menu DockPanel.Dock="Top" Margin="0 0 0 10" Background="#102E5B" Foreground="White" FontSize="13">
                 <MenuItem Header="_File">
                     <MenuItem Header="_New" cal:Message.Attach="LoadNewCompany" Foreground="Black"/>
-                    <MenuItem Header="_Open"  Foreground="Black"  />
+                    <MenuItem Header="_Open" x:Name="OpenXMLFile" Foreground="Black"  />
                     <MenuItem Header="_Save" Foreground="Black"/>
+                    <MenuItem Header="_Save As" Foreground="Black"/>
                     <Separator />
                     <MenuItem Header="_Exit" x:Name="ExitApp" Foreground="Black"/>
                 </MenuItem>

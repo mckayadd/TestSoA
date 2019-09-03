@@ -21,6 +21,11 @@ namespace SoAEditor.ViewModels
             ActivateItem(new NewTaxonomyViewModel());
         }
 
+        public void OpenXMLFile()
+        {
+            ActivateItem(new NewCompanyViewModel("openFile"));
+        }
+
         public void ExitApp()
         {
             Application.Current.Shutdown();
