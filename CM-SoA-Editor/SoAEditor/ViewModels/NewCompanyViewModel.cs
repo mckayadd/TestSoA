@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using SOA_DataAccessLibrary;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace SoAEditor.ViewModels
         private string _street;
         private string _state;
         private string _zip;
+        private string _fullPath = "";
 
         XDocument doc;
         Soa SampleSOA;
@@ -33,8 +35,8 @@ namespace SoAEditor.ViewModels
         {
             if(str.Equals("openFile"))
             {
-                //doc = new XDocument();
-                SampleSOA = new Soa();
+                // doc = new XDocument();
+                // SampleSOA = new Soa();
                 OpenFile();
             }
         }
@@ -52,6 +54,7 @@ namespace SoAEditor.ViewModels
             {
                 if (dlg.ShowDialog() != DialogResult.OK) return;
 
+                FullPath = dlg.FileName;
                 dao.load(dlg.FileName);
                 SampleSOA = dao.SOADataMaster;
 
@@ -71,7 +74,6 @@ namespace SoAEditor.ViewModels
                 City = SampleSOA.CapabilityScope.Locations[0].Address.City;
                 State = SampleSOA.CapabilityScope.Locations[0].Address.State;
                 Zip = SampleSOA.CapabilityScope.Locations[0].Address.Zip;
-
             }
             catch (Exception)
             {
@@ -79,6 +81,53 @@ namespace SoAEditor.ViewModels
                 return;
             }
         }
+
+        public void SaveXML()
+        {
+
+            doc = new XDocument();
+
+            SampleSOA.CapabilityScope.Locations[0].Address.Street = Street;
+            SampleSOA.CapabilityScope.Locations[0].Address.City = City;
+            SampleSOA.CapabilityScope.Locations[0].Address.State = State;
+            SampleSOA.CapabilityScope.Locations[0].Address.Zip = Zip;
+
+            SampleSOA.Ab_ID = "a";
+            SampleSOA.Ab_Logo_Signature = "a";
+            SampleSOA.Scope_ID_Number = "a";
+            SampleSOA.Criteria = "a";
+            SampleSOA.EffectiveDate = "a";
+            SampleSOA.ExpirationDate = "a";
+            SampleSOA.Statement = "a";
+            SampleSOA.CapabilityScope.MeasuringEntity = "a";
+            SampleSOA.CapabilityScope.Locations[0].id = "a";
+            SampleSOA.CapabilityScope.Locations[0].ContactName = "a";
+            //SampleSOA.CapabilityScope.Locations[0].ContactInfo = Contact_info;
+
+            SampleSOA.writeTo(doc); // doc becomes null when open a document
+
+            if(FullPath.Length == 0)
+            {
+                System.Windows.Forms.SaveFileDialog saveFileDlg = new System.Windows.Forms.SaveFileDialog();
+
+                saveFileDlg.Filter = "XML Files (*.xml)|*.xml|All Files(*.*)|*.*";
+                saveFileDlg.FilterIndex = 2;
+                saveFileDlg.RestoreDirectory = true;
+
+                if (saveFileDlg.ShowDialog() == DialogResult.OK)
+                {
+                    // Code to write the stream goes here.
+                    FullPath = saveFileDlg.FileName;
+                    doc.Save(FullPath);
+                    return;
+                }
+            }
+            else if (FullPath.Length != 0)
+            {
+                doc.Save(FullPath);
+            }
+        }
+
 
         public string City
         {
@@ -113,34 +162,10 @@ namespace SoAEditor.ViewModels
             set { _street = value; }
         }
 
-        public void SaveXML()
+        public string FullPath
         {
-
-            doc = new XDocument();
-
-            SampleSOA.CapabilityScope.Locations[0].Address.Street = Street;
-            SampleSOA.CapabilityScope.Locations[0].Address.City = City;
-            SampleSOA.CapabilityScope.Locations[0].Address.State = State;
-            SampleSOA.CapabilityScope.Locations[0].Address.Zip = Zip;
-
-            SampleSOA.Ab_ID = "a";
-            SampleSOA.Ab_Logo_Signature = "a";
-            SampleSOA.Scope_ID_Number = "a";
-            SampleSOA.Criteria = "a";
-            SampleSOA.EffectiveDate = "a";
-            SampleSOA.ExpirationDate = "a";
-            SampleSOA.Statement = "a";
-            SampleSOA.CapabilityScope.MeasuringEntity = "a";
-            SampleSOA.CapabilityScope.Locations[0].id = "a";
-            SampleSOA.CapabilityScope.Locations[0].ContactName = "a";
-            //SampleSOA.CapabilityScope.Locations[0].ContactInfo = Contact_info;
-    
-
-            SampleSOA.writeTo(doc); // doc becomes null when open a document
-
-            doc.Save(@"C:\Temp\MySample.xml");
-
-
+            get { return _fullPath; }
+            set { _fullPath = value; }
         }
 
     }

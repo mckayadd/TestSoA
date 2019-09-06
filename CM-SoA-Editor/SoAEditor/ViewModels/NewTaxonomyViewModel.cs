@@ -26,19 +26,8 @@ namespace SoAEditor.ViewModels
             TaxonomyOptions.Add("Source");
             TaxonomyOptions.Add("Measure");
 
-
             LoadTaxonomyDatabase();
 
-            /* TaxonomyContent.Add("Source.AC.DC");
-             TaxonomyContent.Add("Source.DF.HF");
-             TaxonomyContent.Add("Source.Merhaba");
-             TaxonomyContent.Add("Source.Hello");
-             TaxonomyContent.Add("Source.World");
-             TaxonomyContent.Add("Measure.AC.DC");
-             TaxonomyContent.Add("Measure.Nesimi");
-             TaxonomyContent.Add("Measure.Kildiyse");
-             TaxonomyContent.Add("Measure.bir.katre");
-             TaxonomyContent.Add("Measure.Tovbe");*/
         }
 
         public void LoadTaxonomyDatabase()
