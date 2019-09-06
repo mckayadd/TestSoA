@@ -20,6 +20,7 @@ namespace SoAEditor.ViewModels
         private string _state;
         private string _zip;
         private string _fullPath = "";
+        private bool _isSaveAs = false;
 
         XDocument doc;
         Soa SampleSOA;
@@ -104,9 +105,9 @@ namespace SoAEditor.ViewModels
             SampleSOA.CapabilityScope.Locations[0].ContactName = "a";
             //SampleSOA.CapabilityScope.Locations[0].ContactInfo = Contact_info;
 
-            SampleSOA.writeTo(doc); // doc becomes null when open a document
+            SampleSOA.writeTo(doc); 
 
-            if(FullPath.Length == 0)
+            if(FullPath.Length == 0 || IsSaveAs == true) // Saving a new file or Save as...
             {
                 System.Windows.Forms.SaveFileDialog saveFileDlg = new System.Windows.Forms.SaveFileDialog();
 
@@ -119,15 +120,22 @@ namespace SoAEditor.ViewModels
                     // Code to write the stream goes here.
                     FullPath = saveFileDlg.FileName;
                     doc.Save(FullPath);
+                    System.Windows.Forms.MessageBox.Show("File saved!");
                     return;
                 }
             }
             else if (FullPath.Length != 0)
             {
                 doc.Save(FullPath);
+                System.Windows.Forms.MessageBox.Show("File saved!");
             }
         }
 
+        public void SaveAsXML()
+        {
+            IsSaveAs = true;
+            SaveXML();
+        }
 
         public string City
         {
@@ -168,5 +176,14 @@ namespace SoAEditor.ViewModels
             set { _fullPath = value; }
         }
 
+        public bool IsSaveAs
+        {
+            get { return _isSaveAs; }
+            set
+            {
+                _isSaveAs = value;
+                NotifyOfPropertyChange(() => IsSaveAs);
+            }
+        }
     }
 }

@@ -5,7 +5,9 @@ using System.Windows;
 namespace SoAEditor.ViewModels
 {
     public class ShellViewModel : Conductor<object>
-    {  
+    {
+        private NewCompanyViewModel ncvm = null;
+
         public ShellViewModel()
         {
 
@@ -13,7 +15,7 @@ namespace SoAEditor.ViewModels
 
         public void LoadNewCompany()
         {
-            ActivateItem(new NewCompanyViewModel());
+            ActivateItem(ncvm = new NewCompanyViewModel());
         }
 
         public void LoadNewTaxonomy()
@@ -23,7 +25,17 @@ namespace SoAEditor.ViewModels
 
         public void OpenXMLFile()
         {
-            ActivateItem(new NewCompanyViewModel("openFile"));
+            ActivateItem(ncvm = new NewCompanyViewModel("openFile"));
+        }
+
+        public void SaveXML()
+        {
+            ncvm.SaveXML();
+        }
+
+        public void SaveAsXML()
+        {
+            ncvm.SaveAsXML();
         }
 
         public void ExitApp()
