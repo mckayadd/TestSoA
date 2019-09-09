@@ -75,6 +75,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\ProcessType.cs" />
     <Compile Include="ViewModels\NewCompanyViewModel.cs" />
     <Compile Include="ViewModels\NewTaxonomyViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
@@ -116,9 +117,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="Style.xaml">
       <SubType>Designer</SubType>

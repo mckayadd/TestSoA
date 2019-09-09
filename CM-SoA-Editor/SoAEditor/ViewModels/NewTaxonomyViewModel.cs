@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using SoAEditor.Models;
 
 namespace SoAEditor.ViewModels
 {
@@ -18,6 +19,17 @@ namespace SoAEditor.ViewModels
         private BindableCollection<string> _taxonomyOptions = new BindableCollection<string>();
         private BindableCollection<string> _taxonomyContent = new BindableCollection<string>();
         private BindableCollection<string> _selectedTaxonomy = new BindableCollection<string>();
+        private BindableCollection<ProcessType> _processTypes = new BindableCollection<ProcessType>(); // ProcessType is defined in the Models
+
+
+        private ProcessType _currentProcessType; // to be saved for a company
+
+        private string _optionalParameters = "World";
+        private string _requiredParameters = "Hello";
+
+
+
+
 
         public NewTaxonomyViewModel()
         {
@@ -25,6 +37,8 @@ namespace SoAEditor.ViewModels
 
             TaxonomyOptions.Add("Source");
             TaxonomyOptions.Add("Measure");
+
+            _currentProcessType = new ProcessType();
 
             LoadTaxonomyDatabase();
 
@@ -34,9 +48,73 @@ namespace SoAEditor.ViewModels
         {
             XmlDocument db = new XmlDocument();
             db.Load(@"c:\temp\MetrologyNET_Taxonomy_v2.xml"); //the path should be updated in the final version
+
+            //////////////////////////////
+
+            XmlNodeList ptNodesList = db.GetElementsByTagName("mtc:ProcessType");
+
+            foreach(XmlNode xmlNode in ptNodesList)
+            {
+                ProcessType tempPt = new ProcessType(); // Model object to be filled by XML node
+                String tempName = xmlNode.Attributes["name"].Value;
+                //Console.WriteLine(tempName);
+                if(tempName.StartsWith("Source"))     // taxonomy contains: <mtc:ProcessType name="D0AD73A4-E43E-4B9A-9C41-9A54281C18BC">, changed with: Source.Power.Lorem.Ipsum
+                {
+                    tempPt.Action = "Source";
+                    tempPt.Taxonomy = tempName.Substring(7);
+                }
+                else if (tempName.StartsWith("Measure"))
+                {
+                    tempPt.Action = "Measure";
+                    tempPt.Taxonomy = tempName.Substring(8);
+                }
+
+                XmlNodeList childNodeList = xmlNode.ChildNodes;
+                foreach(XmlNode childNode in childNodeList)
+                {
+                    if(childNode.Name.Equals("mtc:Parameter"))
+                    {
+                        bool isOptional = false;
+                        XmlAttributeCollection attributes = childNode.Attributes;
+                        foreach (XmlAttribute xmlAttribute in attributes)
+                        {
+                            if (xmlAttribute.Name.Equals("optional")) isOptional = true;
+                        }
+
+                        if (isOptional == true) // optional parameter
+                        {
+                            tempPt.OptionalParameters.Add(childNode.Attributes["name"].Value);
+                        }
+                        else if (isOptional == false)
+                        {
+                            tempPt.RequiredParameters.Add(childNode.Attributes["name"].Value);
+                        }
+                    }
+                }
+
+                ProcessTypes.Add(tempPt);
+            }
+
+            /////////////////////////////
+
+
             int process_count = db.GetElementsByTagName("mtc:ProcessType").Count;
             string strTemp;
-            strTemp = db.GetElementsByTagName("mtc:ProcessType")[0].Attributes["name"].Value; //("mtc:Parameter"); // Attributes["name"].Value;
+            System.Xml.XmlNode nd = db.GetElementsByTagName("mtc:ProcessType")[0]; //("mtc:Parameter"); // Attributes["name"].Value;
+
+            System.Xml.XmlNodeList ndList = nd.ChildNodes;
+
+            //Console.WriteLine("Count: " + process_count + "    !!!!!!!");
+
+            //Console.WriteLine("List Length: " + ptNodesList.Count + "    !!!!!!!");
+
+            foreach (XmlNode iNode in ndList)
+            {
+                if (iNode.Name.Equals("mtc:Parameter"))
+                {
+                    //Console.WriteLine(iNode.Attributes["name"].Value);
+                }
+            }
 
             for (int i = 0; i < process_count; i++)
             {
@@ -57,12 +135,11 @@ namespace SoAEditor.ViewModels
                 if (string.Equals(value, "Source"))
                 {
                     SelectedTaxonomy.Clear();
-                    foreach (string str in TaxonomyContent)
+                    foreach (ProcessType processType in ProcessTypes)
                     {
-                        if (str.StartsWith("Source"))
+                        if (processType.Action.Equals("Source"))
                         {
-                            string tempStr = str.Substring(7);
-                            SelectedTaxonomy.Add(tempStr);
+                            SelectedTaxonomy.Add(processType.Taxonomy);
                         }
                     }
                     CanSelectATaxonomy = IsSelectedTaxonomyEmpty();
@@ -70,12 +147,11 @@ namespace SoAEditor.ViewModels
                 else if (string.Equals(value, "Measure"))
                 {
                     SelectedTaxonomy.Clear();
-                    foreach (string str in TaxonomyContent)
+                    foreach (ProcessType processType in ProcessTypes)
                     {
-                        if (str.StartsWith("Measure"))
+                        if (processType.Action.Equals("Measure"))
                         {
-                            string tempStr = str.Substring(8);
-                            SelectedTaxonomy.Add(tempStr);
+                            SelectedTaxonomy.Add(processType.Taxonomy);
                         }
                     }
                     CanSelectATaxonomy = IsSelectedTaxonomyEmpty();
@@ -106,9 +182,38 @@ namespace SoAEditor.ViewModels
             {
                 _selectedProcessType = value;
 
-                // string str = SelectedOptionForTaxonomy + SelectedProcessType; // Source + Volts.AC
+                // SelectedOptionForTaxonomy + SelectedProcessType; // Source + Volts.AC
+                
+                foreach(ProcessType processType in ProcessTypes)
+                {
+                    if(processType.Action.Equals(SelectedOptionForTaxonomy) && processType.Taxonomy.Equals(SelectedProcessType))
+                    {
+                        CurrentProcessType = processType;
+                        break;
+                    }
+                }
 
-                // required parameters will be added
+                //Console.WriteLine("--- " + CurrentProcessType.Action + "." + CurrentProcessType.Taxonomy + " ---");
+
+                string strReq = "";
+
+                RequiredParameters = "";
+                foreach (string str in CurrentProcessType.RequiredParameters)
+                {
+                    strReq += str + "\n";
+                }
+
+                RequiredParameters = strReq;
+
+                string strOpt = "";
+
+                OptionalParameters = "";
+                foreach (string str in CurrentProcessType.OptionalParameters)
+                {
+                    strOpt += str + "\n";
+                }
+
+                OptionalParameters = strOpt;
 
                 NotifyOfPropertyChange(() => SelectedProcessType);
             }
@@ -143,5 +248,39 @@ namespace SoAEditor.ViewModels
             set { _taxonomyContent = value; }
         }
 
+        public BindableCollection<ProcessType> ProcessTypes
+        {
+            get { return _processTypes; }
+            set { _processTypes = value; }
+        }
+
+        public ProcessType CurrentProcessType
+        {
+            get { return _currentProcessType; }
+            set { _currentProcessType = value; }
+        }
+
+        public string OptionalParameters
+        {
+            get { return _optionalParameters; }
+            set
+            {
+                _optionalParameters = value;
+                NotifyOfPropertyChange(() => OptionalParameters);
+            }
+        }
+
+        public string RequiredParameters
+        {
+            get { return _requiredParameters; }
+            set
+            {
+                _requiredParameters = value;
+                NotifyOfPropertyChange(() => RequiredParameters);
+            }
+        }
+
     }
+
+
 }
