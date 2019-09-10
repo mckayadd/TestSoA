@@ -43,18 +43,42 @@
         
         
         <!-- Row 2 -->
-        <StackPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="2">
-            <Label Content="Required Parameters"></Label>
-            <TextBlock Height="120" Background="LightGray" Margin="10 0 10 0"
-                       x:Name="RequiredParameters"></TextBlock>
-            
+        <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="3">
+            <!--<Label Content="Required Parameters"></Label>-->
+            <!-- <TextBlock Height="120" Background="LightGray" Margin="10 0 10 0"
+                       x:Name="RequiredParameters"></TextBlock> -->
+            <DataGrid x:Name="RequiredParameters"
+                      AlternatingRowBackground="LightGray"
+                      CanUserAddRows="False"
+                      AutoGenerateColumns="False"
+                      HeadersVisibility="Column" Margin="4 0 25 0"
+                      BorderThickness="0" MinColumnWidth="150"
+                      HorizontalScrollBarVisibility="Hidden">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Required        "
+                                Binding="{Binding Path=ParameterName}" />
+                </DataGrid.Columns>
+            </DataGrid>    
         </StackPanel>
 
-        <StackPanel Grid.Row="2" Grid.Column="2" Grid.RowSpan="2">
-            <Label Content="Optional Parameters"></Label>
-            <TextBlock Height="120" Background="LightGray" Margin="10 0 10 0"
-                       x:Name="OptionalParameters"></TextBlock>
+        <StackPanel Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="3">
+            <!--<Label Content="Optional Parameters"></Label>-->
+            <!-- <TextBlock Height="120" Background="LightGray" Margin="10 0 10 0"
+                       x:Name="OptionalParameters"></TextBlock> -->
+            <DataGrid x:Name="OptionalParameters" 
+                      AlternatingRowBackground="LightGray"
+                      CanUserAddRows="True"
+                      CanUserDeleteRows="True"
+                      AutoGenerateColumns="False"
+                      HeadersVisibility="Column" Margin="4 0 25 0"
+                      BorderThickness="0" MinColumnWidth="150"
+                      HorizontalScrollBarVisibility="Hidden">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Optional"
+                                Binding="{Binding Path=ParameterName}" />
+                </DataGrid.Columns>
 
+            </DataGrid>
         </StackPanel>
 
 

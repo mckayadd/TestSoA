@@ -21,15 +21,10 @@ namespace SoAEditor.ViewModels
         private BindableCollection<string> _selectedTaxonomy = new BindableCollection<string>();
         private BindableCollection<ProcessType> _processTypes = new BindableCollection<ProcessType>(); // ProcessType is defined in the Models
 
-
         private ProcessType _currentProcessType; // to be saved for a company
 
-        private string _optionalParameters = "World";
-        private string _requiredParameters = "Hello";
-
-
-
-
+        private BindableCollection<MeasurementParameter> _optionalParameters = new BindableCollection<MeasurementParameter>();
+        private BindableCollection<MeasurementParameter> _requiredParameters = new BindableCollection<MeasurementParameter>();
 
         public NewTaxonomyViewModel()
         {
@@ -41,7 +36,6 @@ namespace SoAEditor.ViewModels
             _currentProcessType = new ProcessType();
 
             LoadTaxonomyDatabase();
-
         }
 
         public void LoadTaxonomyDatabase()
@@ -78,51 +72,24 @@ namespace SoAEditor.ViewModels
                         XmlAttributeCollection attributes = childNode.Attributes;
                         foreach (XmlAttribute xmlAttribute in attributes)
                         {
-                            if (xmlAttribute.Name.Equals("optional")) isOptional = true;
+                            if (xmlAttribute.Name.Equals("optional") && xmlAttribute.Value.Equals("true")) // if there exist an optional attribute and its value is true...
+                            {
+                                isOptional = true;
+                            }
                         }
 
                         if (isOptional == true) // optional parameter
                         {
-                            tempPt.OptionalParameters.Add(childNode.Attributes["name"].Value);
+                            tempPt.OptionalParameters.Add(new MeasurementParameter(childNode.Attributes["name"].Value));
                         }
                         else if (isOptional == false)
                         {
-                            tempPt.RequiredParameters.Add(childNode.Attributes["name"].Value);
+                            tempPt.RequiredParameters.Add(new MeasurementParameter(childNode.Attributes["name"].Value));
                         }
                     }
                 }
 
                 ProcessTypes.Add(tempPt);
-            }
-
-            /////////////////////////////
-
-
-            int process_count = db.GetElementsByTagName("mtc:ProcessType").Count;
-            string strTemp;
-            System.Xml.XmlNode nd = db.GetElementsByTagName("mtc:ProcessType")[0]; //("mtc:Parameter"); // Attributes["name"].Value;
-
-            System.Xml.XmlNodeList ndList = nd.ChildNodes;
-
-            //Console.WriteLine("Count: " + process_count + "    !!!!!!!");
-
-            //Console.WriteLine("List Length: " + ptNodesList.Count + "    !!!!!!!");
-
-            foreach (XmlNode iNode in ndList)
-            {
-                if (iNode.Name.Equals("mtc:Parameter"))
-                {
-                    //Console.WriteLine(iNode.Attributes["name"].Value);
-                }
-            }
-
-            for (int i = 0; i < process_count; i++)
-            {
-                TaxonomyContent.Add(db.GetElementsByTagName("mtc:ProcessType")[i].Attributes["name"].Value);
-
-
-                
-                // string str = SampleSOA.CapabilityScope.Activities[0].ProcessTypes[0].ProcessType.Parameters;
             }
         }
 
@@ -195,26 +162,20 @@ namespace SoAEditor.ViewModels
 
                 //Console.WriteLine("--- " + CurrentProcessType.Action + "." + CurrentProcessType.Taxonomy + " ---");
 
-                string strReq = "";
-
-                RequiredParameters = "";
-                foreach (string str in CurrentProcessType.RequiredParameters)
+                RequiredParameters.Clear();
+                foreach (MeasurementParameter mp in CurrentProcessType.RequiredParameters)
                 {
-                    strReq += str + "\n";
+                    RequiredParameters.Add(mp);
                 }
 
-                RequiredParameters = strReq;
-
-                string strOpt = "";
-
-                OptionalParameters = "";
-                foreach (string str in CurrentProcessType.OptionalParameters)
+                OptionalParameters.Clear();
+                foreach (MeasurementParameter mp in CurrentProcessType.OptionalParameters)
                 {
-                    strOpt += str + "\n";
+                    OptionalParameters.Add(mp);
                 }
 
-                OptionalParameters = strOpt;
-
+                NotifyOfPropertyChange(() => RequiredParameters);
+                NotifyOfPropertyChange(() => OptionalParameters);
                 NotifyOfPropertyChange(() => SelectedProcessType);
             }
         }
@@ -260,7 +221,7 @@ namespace SoAEditor.ViewModels
             set { _currentProcessType = value; }
         }
 
-        public string OptionalParameters
+        public BindableCollection<MeasurementParameter> OptionalParameters
         {
             get { return _optionalParameters; }
             set
@@ -270,7 +231,7 @@ namespace SoAEditor.ViewModels
             }
         }
 
-        public string RequiredParameters
+        public BindableCollection<MeasurementParameter> RequiredParameters
         {
             get { return _requiredParameters; }
             set

@@ -10,7 +10,7 @@ namespace SoAEditor.Models
     {
         public string Action;
         public string Taxonomy;
-        public List<string> RequiredParameters = new List<string>();
-        public List<string> OptionalParameters = new List<string>();
+        public List<MeasurementParameter> RequiredParameters = new List<MeasurementParameter>();
+        public List<MeasurementParameter> OptionalParameters = new List<MeasurementParameter>();
     }
 }
