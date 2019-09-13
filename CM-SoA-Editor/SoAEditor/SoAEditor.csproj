@@ -75,16 +75,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\CompanyModel.cs" />
+    <Compile Include="Models\CompanyInfoModel.cs" />
     <Compile Include="Models\MeasurementParameter.cs" />
     <Compile Include="Models\ProcessType.cs" />
-    <Compile Include="ViewModels\NewCompanyViewModel.cs" />
-    <Compile Include="ViewModels\NewTaxonomyViewModel.cs" />
+    <Compile Include="Models\TaxonomyInfoModel.cs" />
+    <Compile Include="ViewModels\CompanyInfoViewModel.cs" />
+    <Compile Include="ViewModels\Helper.cs" />
+    <Compile Include="ViewModels\TaxonomyInfoViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="Views\NewCompanyView.xaml.cs">
-      <DependentUpon>NewCompanyView.xaml</DependentUpon>
+    <Compile Include="Views\CompanyInfoView.xaml.cs">
+      <DependentUpon>CompanyInfoView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewTaxonomyView.xaml.cs">
-      <DependentUpon>NewTaxonomyView.xaml</DependentUpon>
+    <Compile Include="Views\TaxonomyInfoView.xaml.cs">
+      <DependentUpon>TaxonomyInfoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -124,11 +128,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NewCompanyView.xaml">
+    <Page Include="Views\CompanyInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NewTaxonomyView.xaml">
+    <Page Include="Views\TaxonomyInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

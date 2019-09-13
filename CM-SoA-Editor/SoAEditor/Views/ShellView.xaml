@@ -35,7 +35,7 @@
         <DockPanel Grid.Row="0" Grid.ColumnSpan="5">
             <Menu DockPanel.Dock="Top" Margin="0 0 0 10" Background="#102E5B" Foreground="White" FontSize="13">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_New" cal:Message.Attach="LoadNewCompany" Foreground="Black"/>
+                    <MenuItem Header="_New" cal:Message.Attach="LoadCompanyInfo" Foreground="Black"/>
                     <MenuItem Header="_Open" x:Name="OpenXMLFile" Foreground="Black"  />
                     <MenuItem Header="_Save" x:Name="SaveXML" Foreground="Black"/>
                     <MenuItem Header="_Save As" x:Name="SaveAsXML"  Foreground="Black"/>
@@ -70,10 +70,9 @@
         
         <!-- Row 4 -->
         <StackPanel Grid.Row="4" Grid.Column="1">
-            <Button Height="30" Margin="10 0 10 10" x:Name="LoadNewCompany">New Company</Button>
-            <Button Height="30" Margin="10 0 10 10" x:Name="LoadNewTaxonomy">New Taxonomy</Button>
-            
-            
+            <Button Height="30" Margin="10 0 10 10" x:Name="LoadCompanyInfo">Company Info</Button>
+            <Button Height="30" Margin="10 0 10 10" x:Name="LoadTaxonomyInfo">Taxonomy</Button>
+ 
         </StackPanel>
         <ContentControl Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                         x:Name="ActiveItem" />  

@@ -18,9 +18,9 @@ namespace SoAEditor.Views
     /// <summary>
     /// Interaction logic for PageOneView.xaml
     /// </summary>
-    public partial class NewCompanyView : UserControl
+    public partial class CompanyInfoView : UserControl
     {
-        public NewCompanyView()
+        public CompanyInfoView()
         {
             InitializeComponent();
         }

@@ -9,7 +9,7 @@ using SoAEditor.Models;
 
 namespace SoAEditor.ViewModels
 {
-   public class NewTaxonomyViewModel : Screen
+   public class TaxonomyInfoViewModel : Screen
     {
         private string _selectedOptionForTaxonomy;
         private string _selectedProcessType;
@@ -26,7 +26,7 @@ namespace SoAEditor.ViewModels
         private BindableCollection<MeasurementParameter> _optionalParameters = new BindableCollection<MeasurementParameter>();
         private BindableCollection<MeasurementParameter> _requiredParameters = new BindableCollection<MeasurementParameter>();
 
-        public NewTaxonomyViewModel()
+        public TaxonomyInfoViewModel()
         {
             //SampleSOA = new Soa();
 
@@ -52,7 +52,7 @@ namespace SoAEditor.ViewModels
                 ProcessType tempPt = new ProcessType(); // Model object to be filled by XML node
                 String tempName = xmlNode.Attributes["name"].Value;
                 //Console.WriteLine(tempName);
-                if(tempName.StartsWith("Source"))     // taxonomy contains: <mtc:ProcessType name="D0AD73A4-E43E-4B9A-9C41-9A54281C18BC">, changed with: Source.Power.Lorem.Ipsum
+                if(tempName.StartsWith("Source"))     // taxonomy contains: <mtc:ProcessType name="D0AD73A4-E43E-4B9A-9C41-9A54281C18BC">, change or delete it
                 {
                     tempPt.Action = "Source";
                     tempPt.Taxonomy = tempName.Substring(7);
