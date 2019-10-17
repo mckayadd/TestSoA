@@ -1,5 +1,4 @@
 ﻿using Caliburn.Micro;
-using System.Windows;
 using SoAEditor.Models;
 using System;
 using System.Windows.Forms;
@@ -61,8 +60,8 @@ namespace SoAEditor.ViewModels
                 FullPath = dlg.FileName;
                 dao.load(dlg.FileName);
                 SampleSOA = dao.SOADataMaster;
-                Helper.LoadCompanyInfoFromSoaObjectToOpen(SampleSOA, CompanyM); // assigns info extracted from XML to the Company info form
-                CompanyInfoVM.LoadCompanyInfo(); // copies info into local parameters to be shown in the view
+                Helper.LoadCompanyInfoFromSoaObjectToOpen(SampleSOA, CompanyM); // assigns info extracted from XML to the Company info form: SoA_DataAccessLibrary Object -> Object of our hierarchy
+                CompanyInfoVM.LoadCompanyInfo(); // copies info into local parameters to be shown in the view: Our object -> Local variables
                 ActivateItem(CompanyInfoVM);
             }
             catch (Exception)
