@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Company Info";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<form action="SaveCompanyInfo" method="post">
+    <p>
+        <label>Street</label>
+        <input class="form-control" type="text" name="Street" value="" placeholder="Street" />
+    </p>
+
+    <p>
+        <label>City</label>
+        <input class="form-control" type="text" name="City" value="" placeholder="City" />
+    </p>
+
+    <p>
+        <label>State</label>
+        <input class="form-control" type="text" name="State" value="" placeholder="State" />
+    </p>
+
+    <p>
+        <label>Zip</label>
+        <input class="form-control" type="text" name="Zip" value="" placeholder="Zip" />
+    </p>
+
+
+    <p>
+        <input type="submit" value="Save Info">
+    </p>
+
+</form>>
